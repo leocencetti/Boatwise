@@ -381,5 +381,18 @@ function backToSetup() {
     state.incorrectCount = 0;
 }
 
+// Viewport height fallback for mobile browsers (iOS Safari, etc.)
+function updateVhVar() {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
+
 // Initialize app when DOM is loaded
-document.addEventListener('DOMContentLoaded', initializeApp);
+document.addEventListener('DOMContentLoaded', () => {
+    updateVhVar();
+    initializeApp();
+});
+
+// Update on resize/orientation changes
+window.addEventListener('resize', updateVhVar);
+window.addEventListener('orientationchange', updateVhVar);

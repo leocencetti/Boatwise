@@ -7,18 +7,22 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    height: 100vh;
+    /* Use dynamic viewport height for mobile browsers and a JS fallback */
+    min-height: calc(var(--vh, 1vh) * 100);
     padding: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    /* Ensure content isn't obstructed by iOS safe area */
+    padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px));
 }
 
 .container {
     max-width: 900px;
     width: 100%;
-    height: calc(100vh - 20px);
+    /* Match visible viewport height minus body padding */
+    height: calc(var(--vh, 1vh) * 100 - 20px);
     background: white;
     border-radius: 12px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
@@ -276,6 +280,8 @@ header h1 {
     padding-top: 15px;
     border-top: 2px solid #e2e8f0;
     flex-shrink: 0;
+    /* Add bottom padding to avoid overlap with iOS home indicator */
+    padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
 .quiz-navigation .btn {
@@ -290,7 +296,7 @@ header h1 {
 
     .container {
         border-radius: 8px;
-        height: calc(100vh - 10px);
+        height: calc(var(--vh, 1vh) * 100 - 10px);
     }
 
     header {
@@ -345,5 +351,20 @@ header h1 {
     .answer-option {
         padding: 12px;
         font-size: 0.95em;
+    }
+}
+
+/* Prefer modern dynamic viewport units when supported */
+@supports (height: 100dvh) {
+    body {
+        min-height: 100dvh;
+    }
+    .container {
+        height: calc(100dvh - 20px);
+    }
+    @media (max-width: 768px) {
+        .container {
+            height: calc(100dvh - 10px);
+        }
     }
 }
