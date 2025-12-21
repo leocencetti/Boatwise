@@ -1,0 +1,251 @@
+ID,IMMAGINE,DOMANDA,RISPOSTA 1,RISPOSTA 1 V/F,RISPOSTA 2,RISPOSTA 2 V/F,PROGRESSIVO,CAPITOLO,TEMA,VOCE
+1,,Lo scafo di un'unità navale a vela è la parte immersa della deriva.,VERO,F,FALSO,V,2.1.1-1,VELA,TEORIA,TEORIA DELLA VELA
+2,,Lo scafo di un'unità a vela è la struttura galleggiante e portante della stessa.,VERO,V,FALSO,F,2.1.1-2,VELA,TEORIA,TEORIA DELLA VELA
+3,,La presenza del bulbo zavorrato in un'unità navale a vela ha la funzione di fornire alla stessa una maggiore stabilità per contrastare le azioni esterne (vento).,VERO,V,FALSO,F,2.1.1-3,VELA,TEORIA,TEORIA DELLA VELA
+4,,"La presenza del bulbo zavorrato in un'unità navale a vela ha la funzione di offrire alla stessa una maggior penetrazione alla prua, tale da farle raggiungere velocità più elevate.",VERO,F,FALSO,V,2.1.1-4,VELA,TEORIA,TEORIA DELLA VELA
+5,,La vela si orienta in relazione al flusso del vento.,VERO,V,FALSO,F,2.1.1-5,VELA,TEORIA,TEORIA DELLA VELA
+6,,Per andatura si intende la direzione verso cui la stessa procede rispetto alla direzione di provenienza del vento.,VERO,V,FALSO,F,2.1.1-6,VELA,TEORIA,TEORIA DELLA VELA
+7,,Per andatura si intende la velocità riaggiunta dall'unità navale a vela rispetto alla direzione di provenienza del vento,VERO,F,FALSO,V,2.1.1-7,VELA,TEORIA,TEORIA DELLA VELA
+8,,"Quando l'unità a vela si muove a favore di vento, il vento apparente equivale alla differenza tra il vento reale e quello di velocità dell'unità navale stessa.",VERO,V,FALSO,F,2.1.1-8,VELA,TEORIA,TEORIA DELLA VELA
+9,,"Quando l'unità a vela si muove a favore di vento, il vento apparente,  corrisponde alla somma tra il vento reale e quello di velocità dell'unità navale",VERO,F,FALSO,V,2.1.1-9,VELA,TEORIA,TEORIA DELLA VELA
+10,,"Quando l'unità a vela si muove controvento, il vento apparente corrisponde alla somma tra il vento reale e quello di velocità dell'unità navale.",VERO,V,FALSO,F,2.1.1-10,VELA,TEORIA,TEORIA DELLA VELA
+11,,"Quando l'unità a vela si muove controvento, il vento apparente è pari al vento di velocità dell'unità navale stessa.",VERO,F,FALSO,V,2.1.1-11,VELA,TEORIA,TEORIA DELLA VELA
+12,,"Durante la navigazione di una unità a vela, il vento apparente è sempre orientato più a proravia rispetto al vento reale.",VERO,V,FALSO,F,2.1.1-12,VELA,TEORIA,TEORIA DELLA VELA
+13,,"Durante la navigazione di una unità a vela, il vento apparente, è sempre orientato ortogonalmente rispetto al vento reale.",VERO,F,FALSO,V,2.1.1-13,VELA,TEORIA,TEORIA DELLA VELA
+14,,"Durante la navigazione a vela, il vento apparente ha un'intensità tanto maggiore quanto più l'unità navale procede verso la direzione da cui proviene il vento.",VERO,V,FALSO,F,2.1.1-14,VELA,TEORIA,TEORIA DELLA VELA
+15,,"Durante la navigazione di una navale a vela, il vento apparente ha un'intensità tanto maggiore quanto più l'unità navale si discosta dalla direzione da cui proviene il vento.",VERO,F,FALSO,V,2.1.1-15,VELA,TEORIA,TEORIA DELLA VELA
+16,,"Per andatura di ""bolina"" si intende quando una unità a vela procede con una direzione di rotta che forma un angolo di circa 135° rispetto alla direzione del vento reale.",VERO,F,FALSO,V,2.1.1-16,VELA,TEORIA,TEORIA DELLA VELA
+17,,"Per andatura al ""traverso"" si intende quando una unità a vela procede con una direzione di rotta che forma un angolo di 45° rispetto alla direzione del vento reale.",VERO,F,FALSO,V,2.1.1-17,VELA,TEORIA,TEORIA DELLA VELA
+18,,Per andatura di lasco si intende quando una unità a vela procede con una direzione di rotta che forma un angolo di circa 45° rispetto alla direzione del vento reale.,VERO,F,FALSO,V,2.1.1-18,VELA,TEORIA,TEORIA DELLA VELA
+19,,Per andatura di poppa si intende quando una unità a vela procede con una direzione di rotta che forma un angolo di 90° rispetto alla direzione del vento reale.,VERO,F,FALSO,V,2.1.1-19,VELA,TEORIA,TEORIA DELLA VELA
+20,,"Procedendo di bolina, la velocita avvertita dell'unità a vela sembra elevata perché l'intensità del vento percepita risulta superiore rispetto a quella reale.",VERO,V,FALSO,F,2.1.1-20,VELA,TEORIA,TEORIA DELLA VELA
+21,,"Procedendo di bolina, la velocita avvertita dell'unità a vela sembra elevata perché l'intensità del vento percepita risulta inferiore rispetto a quella reale.",VERO,F,FALSO,V,2.1.1-21,VELA,TEORIA,TEORIA DELLA VELA
+22,,"Procedendo di poppa, la velocita avvertita dell'unità a vela sembra minore perché l'intensità del vento percepita risulta inferiore rispetto a quella reale.",VERO,V,FALSO,F,2.1.1-22,VELA,TEORIA,TEORIA DELLA VELA
+23,,"Procedendo di poppa, la velocita avvertita dell'unità navale a vela sembra minore perché l'intensità del vento percepita risulta superiore rispetto a quella reale.",VERO,F,FALSO,V,2.1.1-23,VELA,TEORIA,TEORIA DELLA VELA
+24,,"Per ""settore di bordeggio"", o ""angolo morto"", si intende quel settore controvento entro il quale una unità a vela non può indirizzare la sua prua per mancanza di portanza delle vele.",VERO,V,FALSO,F,2.1.1-24,VELA,TEORIA,TEORIA DELLA VELA
+25,,"Per ""settore di bordeggio"", o ""angolo morto"", si intende quel settore entro il quale una unità a vela può navigare al fine di aumentare la velocità per raggiungere una determinata destinazione.",VERO,F,FALSO,V,2.1.1-25,VELA,TEORIA,TEORIA DELLA VELA
+26,,Un temporaneo aumento dell'intensità del vento reale (raffica) comporta una favorevole variazione della direzione del vento apparente per assumere un migliore angolo di bolina.,VERO,V,FALSO,F,2.1.1-26,VELA,TEORIA,TEORIA DELLA VELA
+27,,Una temporanea attenuazione dell'intensità del vento reale comporta una favorevole variazione della direzione del vento apparente per assumere un migliore angolo di bolina.,VERO,F,FALSO,V,2.1.1-27,VELA,TEORIA,TEORIA DELLA VELA
+28,,L'angolo di incidenza risulta essere l'angolo formato tra la direzione del vento apparente e quella verso cui è orientata la vela.,VERO,V,FALSO,F,2.1.1-28,VELA,TEORIA,TEORIA DELLA VELA
+29,,Il centro velico risulta essere il punto di applicazione della forza del vento apparente sulle vele e sull'opera morta.,VERO,F,FALSO,V,2.1.1-29,VELA,TEORIA,TEORIA DELLA VELA
+30,,Il centro di deriva risulta essere il centro geometrico della superficie di deriva posto sotto la chiglia dell'unità a vela.,VERO,F,FALSO,V,2.1.1-30,VELA,TEORIA,TEORIA DELLA VELA
+31,,Il centro velico e il centro di deriva si influenzano tra loro generando effetti che sono individuabili e prevedibili per ogni unità a vela.,VERO,V,FALSO,F,2.1.1-31,VELA,TEORIA,TEORIA DELLA VELA
+32,,"In condizioni di timone al centro, quando il centro velico è allineato con il centro di deriva, l'unità a vela si definisce ""neutra"" (né poggiera né orziera).",VERO,V,FALSO,F,2.1.1-32,VELA,TEORIA,TEORIA DELLA VELA
+33,,"In condizioni di timone al centro, quando il centro velico è allineato con il centro di deriva, l'unità a vela si avvicina alla direzione del vento (orziera).",VERO,F,FALSO,V,2.1.1-33,VELA,TEORIA,TEORIA DELLA VELA
+34,,"La posizione del centro velico nelle unità a vela dipende dalla superficie e dalla forma delle vele, dalla reciproca influenza tra le vele bordate e dalla messa a punto dell'attrezzatura.",VERO,V,FALSO,F,2.1.1-34,VELA,TEORIA,TEORIA DELLA VELA
+35,,"Per ""planata"" si intende lo stato in cui viene a trovarsi l'unità a vela navigando in condizioni di equilibrio dinamico sulla cresta dell'onda generato dal suo medesimo avanzamento.",VERO,V,FALSO,F,2.1.1-35,VELA,TEORIA,TEORIA DELLA VELA
+36,,"La ""messa a segno"" delle vele è generata dal vento apparente durante la navigazione.",VERO,V,FALSO,F,2.1.1-36,VELA,TEORIA,TEORIA DELLA VELA
+37,,La pressione esercitata dal vento sulle vele dipende dall'angolo di incidenza.,VERO,V,FALSO,F,2.1.1-37,VELA,TEORIA,TEORIA DELLA VELA
+38,,La pressione esercitata dal vento sulle vele dipende esclusivamente dal valore della prora assunta dall'unità.,VERO,F,FALSO,V,2.1.1-38,VELA,TEORIA,TEORIA DELLA VELA
+39,,La forza di scarroccio risulta perpendicolare all'asse longitudinale dell'unità a vela.,VERO,V,FALSO,F,2.1.1-39,VELA,TEORIA,TEORIA DELLA VELA
+40,,La forza di propulsione risulta perpendicolare all'asse longitudinale dell'unità a vela.,VERO,F,FALSO,V,2.1.1-40,VELA,TEORIA,TEORIA DELLA VELA
+41,,l'albero di un'unità a vela  inclinato verso poppa rende la stessa tendenzialmente orziera.,VERO,V,FALSO,F,2.1.1-41,VELA,TEORIA,TEORIA DELLA VELA
+42,,L'albero di un'unità a vela  inclinato verso prua rende la stessa tendenzialmente poggiera.,VERO,V,FALSO,F,2.1.1-42,VELA,TEORIA,TEORIA DELLA VELA
+43,,La funzione delle stecche poste sulla randa è quella di conservare inalterata la forma della vela in qualsiasi condizione meteomarina.,VERO,V,FALSO,F,2.1.1-43,VELA,TEORIA,TEORIA DELLA VELA
+44,,La funzione delle stecche poste sulla randa è quella di garantire l'ottimale indicazione della direzione del vento sulla vela?,VERO,F,FALSO,V,2.1.1-44,VELA,TEORIA,TEORIA DELLA VELA
+45,,"Con riguardo alla teoria della vela, il multiscafo ha una maggiore stabilità.",VERO,V,FALSO,F,2.1.1-45,VELA,TEORIA,TEORIA DELLA VELA
+46,,Il bulbo zavorrato di un'unità a vela fornisce maggiore stabilità per contrastare l'azione esterna del vento.,VERO,V,FALSO,F,2.1.1-46,VELA,TEORIA,TEORIA DELLA VELA
+47,,La stabilità di un'imbarcazione a vela è assicurata dal bulbo zavorrato.,VERO,V,FALSO,F,2.1.1-47,VELA,TEORIA,TEORIA DELLA VELA
+48,,"La vela tende, per sua natura, ad assumere una posizione neutra di 45° rispetto al flusso del vento e a ricevere una spinta in tale direzione.",VERO,F,FALSO,V,2.1.1-48,VELA,TEORIA,TEORIA DELLA VELA
+49,,Per andatura si intende la direzione verso cui procede un'unità  a vela rispetto alla direzione di provenienza del vento.,VERO,F,FALSO,F,2.1.1-49,VELA,TEORIA,TEORIA DELLA VELA
+50,,"Si chiama ""bolina"" l'andatura in cui l'unità a vela procede con una direzione di rotta che forma un angolo di circa 45° rispetto alla direzione del vento reale.",VERO,V,FALSO,F,2.1.1-50,VELA,TEORIA,TEORIA DELLA VELA
+51,,"Si chiama ""lasco"" l'andatura in cui l'unità  a vela procede con una direzione di rotta che forma un angolo di circa 135° rispetto alla direzione del vento reale.",VERO,V,FALSO,F,2.1.1-51,VELA,TEORIA,TEORIA DELLA VELA
+52,,"Si chiama ""traverso"" l'andatura in cui l'unità  a vela procede con una direzione di rotta che forma un angolo di 90° rispetto alla direzione del vento reale.",VERO,V,FALSO,F,2.1.1-52,VELA,TEORIA,TEORIA DELLA VELA
+53,,"Si chiama ""lasco"" l'andatura in cui l'unità  a vela procede con una direzione di rotta che forma un angolo di circa 90° rispetto alla direzione del vento reale.",VERO,F,FALSO,V,2.1.1-53,VELA,TEORIA,TEORIA DELLA VELA
+54,,"Si chiama ""poppa"" o ""fil di ruota"" l'andatura in cui l'unità a vela procede con una direzione di rotta che forma un angolo di 180° rispetto alla direzione del vento reale.",VERO,V,FALSO,F,2.1.1-54,VELA,TEORIA,TEORIA DELLA VELA
+55,,"Procedendo di bolina, a bordo il vento percepito risulta d'intensità superiore a quella reale.",VERO,V,FALSO,F,2.1.1-55,VELA,TEORIA,TEORIA DELLA VELA
+56,,Procedendo di poppa la velocita avvertita dell'unità a vela sembra elevata perché l'intensità del vento percepita risulta superiore rispetto a quella reale.,VERO,F,FALSO,V,2.1.1-56,VELA,TEORIA,TEORIA DELLA VELA
+57,,Il settore di bordeggio è la zona dello scafo di un'unità navale a vela che concorre a fornire la spinta velica e quindi ad incrementare la velocità della stessa in funzione della direzione del vento.,VERO,F,FALSO,V,2.1.1-57,VELA,TEORIA,TEORIA DELLA VELA
+58,,"Si intende per lato sottovento, la superficie sopravvento della vela che è sottoposta a una depressione.",VERO,F,FALSO,V,2.1.1-58,VELA,TEORIA,TEORIA DELLA VELA
+59,,Il centro velico è il punto di applicazione della risultante delle forze dovute all'azione del vento sulle vele.,VERO,V,FALSO,F,2.1.1-59,VELA,TEORIA,TEORIA DELLA VELA
+60,,E' il centro velico il punto di applicazione delle forza idrodinamica sullo scafo dovuta allo scarroccio.,VERO,F,FALSO,V,2.1.1-60,VELA,TEORIA,TEORIA DELLA VELA
+61,,Il centro di deriva è il centro dello scafo a vela di piccole dimensioni.,VERO,F,FALSO,V,2.1.1-61,VELA,TEORIA,TEORIA DELLA VELA
+62,,Il centro di deriva è il punto di applicazione della resistenza laterale che si oppone alle forze idrodinamiche esercitate sull'opera viva.,VERO,V,FALSO,F,2.1.1-62,VELA,TEORIA,TEORIA DELLA VELA
+63,,Il centro velico e il centro di deriva servono per determinare il punto nave a vela.,VERO,F,FALSO,V,2.1.1-63,VELA,TEORIA,TEORIA DELLA VELA
+64,,"In condizioni di timone neutro (al centro), quando il centro velico è collocato a proravia del centro di deriva, l'unità navale a vela si allontanata dalla direzione del vento (è poggiera).",VERO,V,FALSO,F,2.1.1-64,VELA,TEORIA,TEORIA DELLA VELA
+65,,"In condizioni di timone neutro (al centro), quando il centro velico è allineato con il centro di deriva, l'unità navale a vela si definisce equilibrata (né poggiera né orziera).",VERO,V,FALSO,F,2.1.1-65,VELA,TEORIA,TEORIA DELLA VELA
+66,,"La posizione del centro velico per le unità navali a vela dipende dalla forma della vela, dalla reciproca influenza tra le vele bordate e dalla messa a punto dell'attrezzatura.",VERO,V,FALSO,F,2.1.1-66,VELA,TEORIA,TEORIA DELLA VELA
+67,,La posizione del centro di deriva delle unità a vela dipende dalla forma delle vele.,VERO,F,FALSO,V,2.1.1-67,VELA,TEORIA,TEORIA DELLA VELA
+68,,"Si intende per sopravento, il lato dell'unità ubicato al di sotto del punto di applicazione del vento apparente.",VERO,F,FALSO,V,2.1.1-68,VELA,TEORIA,TEORIA DELLA VELA
+69,,"Si intende per sottovento, il lato dell'unità opposto rispetto a quello su cui batte il vento.",VERO,V,FALSO,F,2.1.1-69,VELA,TEORIA,TEORIA DELLA VELA
+70,,"La dizione di ""mure a dritta/mure a sinistra"" indica la parte prodiera dello scafo sulla quale si infrangono le onde.",VERO,F,FALSO,V,2.1.1-70,VELA,TEORIA,TEORIA DELLA VELA
+71,,Per grasso della vela si intende la parte della vela più prossima alla tensione della drizza.,VERO,F,FALSO,V,2.1.1-71,VELA,TEORIA,TEORIA DELLA VELA
+72,,Il piano velico è l'organizzazione delle vele di un'unità come da progetto ed è essenzialmente caratterizzato dal numero di alberi e dal tipo di vele a disposizione.,VERO,V,FALSO,F,2.1.1-72,VELA,TEORIA,TEORIA DELLA VELA
+73,,Per portanza si intende il peso complessivo di tutte le attrezzature veliche imbarcate su un'unità a vela.,VERO,F,FALSO,V,2.1.1-73,VELA,TEORIA,TEORIA DELLA VELA
+74,,Lo svergolamento della vela dipende dalla velocità del vento reale che aumenta in funzione dell'altezza da cui spira rispetto alla superficie del mare.,VERO,V,FALSO,F,2.1.1-74,VELA,TEORIA,TEORIA DELLA VELA
+75,,"Per ""straorza"" si intende l'improvviso cambio di prua verso la direzione di provenienza del vento,  causato da una raffica  o da un'onda particolarmente intensa.",VERO,V,FALSO,F,2.1.1-75,VELA,TEORIA,TEORIA DELLA VELA
+76,,"Per ""strapoggia"" si intende l'improvviso allontanarsi della prua dalla direzione del vento tale anche da causare una strambata.",VERO,V,FALSO,F,2.1.1-76,VELA,TEORIA,TEORIA DELLA VELA
+77,,"Per ""raffica"" si intende una particolare tipologia di venti, di rilevante intensità, che spirano prevalentemente da levante o da ponente.",VERO,F,FALSO,V,2.1.1-77,VELA,TEORIA,TEORIA DELLA VELA
+78,,"Per ""scarroccio"" si intende la traslazione laterale dell'unità a vela per effetto del vento esercitato sullo scafo durante la navigazione.",VERO,V,FALSO,F,2.1.1-78,VELA,TEORIA,TEORIA DELLA VELA
+79,,"Un'unità a vela scuffia quando si ribalta, immergendo l'albero anche fino a 180° rispetto alla posizione iniziale.",VERO,V,FALSO,F,2.1.1-79,VELA,TEORIA,TEORIA DELLA VELA
+80,,"Si intende per ""smagrire"" la vela il variare della superficie portante della stessa riducendone la sua concavità.",VERO,V,FALSO,F,2.1.1-80,VELA,TEORIA,TEORIA DELLA VELA
+81,,"Si dice ""stringere il vento"" il condurre l'unità a vela lascando quanto più possibile le vele, allontanando la prua dalla direzione dalla quale proviene il vento.",VERO,F,FALSO,V,2.1.1-81,VELA,TEORIA,TEORIA DELLA VELA
+82,,"Si dice ""poggiare"" il condurre l'unità a vela lascando quanto più possibile le vele, allontanando la prua dalla direzione dalla quale proviene il vento.",VERO,V,FALSO,F,2.1.1-82,VELA,TEORIA,TEORIA DELLA VELA
+83,,La forza di propulsione risulta parallela all'asse longitudinale dell'unità navale a vela.,VERO,V,FALSO,F,2.1.1-83,VELA,TEORIA,TEORIA DELLA VELA
+84,,La forza di scarroccio e la forza di propulsione hanno origine dalla forza risultante generata dal vento sulla superificie velica.,VERO,V,FALSO,F,2.1.1-84,VELA,TEORIA,TEORIA DELLA VELA
+85,,"Si intende per ""corda"" della vela la linea idealmente tracciata per unire le due estremità del profilo della vela.",VERO,V,FALSO,F,2.1.1-85,VELA,TEORIA,TEORIA DELLA VELA
+86,,La concavità della vela assolve alla funzione di diminuire la resistenza all'avanzamento dell'unità.,VERO,F,FALSO,V,2.1.1-86,VELA,TEORIA,TEORIA DELLA VELA
+87,,Lo spostamento del peso dell'equipaggio a bordo durante la navigazione a vela può servire a contrastare l'azione sbandante generata dal vento sulla superficie velica.,VERO,V,FALSO,F,2.1.1-87,VELA,TEORIA,TEORIA DELLA VELA
+88,,Per contrastare la tendenza poggera dell'unità a vela è utile spostare i pesi verso prua.,VERO,V,FALSO,F,2.1.1-88,VELA,TEORIA,TEORIA DELLA VELA
+89,,Per contrastare la tendenza orziera dell'unità a vela è utile spostare i pesi verso l'albero.,VERO,F,FALSO,V,2.1.1-89,VELA,TEORIA,TEORIA DELLA VELA
+90,,E' meglio evitare un'impostazione troppo poggera di un'unità perché tale impostazione limita notevolmente l'azione del timone.,VERO,V,FALSO,F,2.1.1-90,VELA,TEORIA,TEORIA DELLA VELA
+91,,"Un'unità in navigazione a vela con andatura di bolina, se eccessivamente sbandata sottovento, subisce un aumento della velocità e una miglior performance delle vele bordate.",VERO,F,FALSO,V,2.1.1-91,VELA,TEORIA,TEORIA DELLA VELA
+92,,E' meglio preferire un'impostazione leggermente orziera di un'unità a vela perché tale impostazione favorisce le prestazioni e la sicurezza a bordo.,VERO,V,FALSO,F,2.1.1-92,VELA,TEORIA,TEORIA DELLA VELA
+93,,L'inclinazione verso la prua dell'albero di un'unità a vela rende la stessa tendenzialmente poggera.,VERO,V,FALSO,F,2.1.1-93,VELA,TEORIA,TEORIA DELLA VELA
+94,,L'inclinazione verso la poppa dell'albero di un'unità a vela rende la stessa tendenzialmente poggera.,VERO,F,FALSO,V,2.1.1-94,VELA,TEORIA,TEORIA DELLA VELA
+95,,Lascare la drizza e la base della randa aumenta la concavità della vela (grasso) e le fa assumere una configurazione adatta all'andatura in fil di ruota.,VERO,V,FALSO,F,2.1.1-95,VELA,TEORIA,TEORIA DELLA VELA
+96,,"L'angolo di incidenza è quello formato tra la direzione del vento apparente e quella verso cui è orientata la vela, in pratica l'angolo con cui il profilo fende l'aria.",VERO,V,FALSO,F,2.1.1-96,VELA,TEORIA,TEORIA DELLA VELA
+97,,"La spinta della randa è principalmente orziera, quella del genoa o del fiocco tendenzialmente poggiera.",VERO,V,FALSO,F,2.1.1-97,VELA,TEORIA,TEORIA DELLA VELA
+98,,"Al crescere del vento si cazzano cunningham (o la drizza randa), il tesabase, la drizza genova.",VERO,V,FALSO,F,2.1.1-98,VELA,TEORIA,TEORIA DELLA VELA
+99,,Al crescere del vento è utile spostare verso prua il carrello del genoa.,VERO,F,FALSO,V,2.1.1-99,VELA,TEORIA,TEORIA DELLA VELA
+100,,"Negli armamenti frazionati, le sartie volanti servono a sostenere l'albero, controbilanciando lo sforzo trasmesso dalle vele allo strallo.",VERO,V,FALSO,F,2.2.1-1,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+101,,"Negli armamenti frazionati con crocette acquartierate verso poppa e paterazzo, le sartie volanti possono dare supporto all'albero ma non sono strutturali.",VERO,V,FALSO,F,2.2.1-2,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+102,,"Si intende per unità attrezzata con armo frazionato quella in cui lo strallo non è ""incappellato"" in testa d'albero.",VERO,V,FALSO,F,2.2.1-3,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+103,,Si intende per unità attrezzata con armo frazionato quella il cui scafo è suddiviso in almeno tre compartimenti.,VERO,F,FALSO,V,2.2.1-4,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+104,,Le crocette garantiscono  un'adeguato punto di forza e ritenuta delle scotte sul piano di coperta.,VERO,F,FALSO,V,2.2.1-5,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+105,,Le crocette servono a tensionare le sartie che sorreggono l'albero lateralmente.,VERO,V,FALSO,F,2.2.1-6,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+106,,La regolazione delle sartie si attua attraverso l'utilizzo del carrello della scotta.,VERO,F,FALSO,V,2.2.1-7,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+107,,L'avvolgifiocco è una particolare galloccia dove viene avvolta la scotta sottovento del fiocco.,VERO,F,FALSO,V,2.2.1-8,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+108,,"La  balumina è il lato più corto della randa, che si introduce all'interno della canaletta del boma.",VERO,F,FALSO,V,2.2.1-9,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+109,,La ralinga della randa è il cavo cucito nel lato di inferitura per essere introdotto all'interno della canaletta dell'albero.,VERO,V,FALSO,F,2.2.1-10,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+110,,"Per ""base"" della randa si intende il lato libero della vela dove sono ricavate le tasche per poter introdurre le stecche.",VERO,F,FALSO,V,2.2.1-11,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+111,,"Per ""angolo di scotta"" della randa si intende quello compreso tra la base e la balumina, dove è agganciato il tesabase.",VERO,V,FALSO,F,2.2.1-12,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+112,,"Per ""angolo di penna"" della randa si intende l'angolo compreso tra la base e la ralinga ove è agganciata la trozza del boma.",VERO,F,FALSO,V,2.2.1-13,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+113,,"Per ""angolo di mura"" della randa si intende l'angolo compreso tra la balumina e la ralinga, posto all'estremità superiore della vela, ove è agganciata la drizza.",VERO,F,FALSO,V,2.2.1-14,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+114,,Il fiocco consente all'unità a vela di navigare esclusivamente con angoli compresi tra i 40° e i 70° rispetto alla direzione da cui spira il vento.,VERO,F,FALSO,V,2.2.1-15,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+115,,"La randa rappresenta la vela principale di un'unità a vela, ubicata a poppavia dell'albero, e di forma triangolare.",VERO,V,FALSO,F,2.2.1-16,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+116,,Il genoa o genova rappresenta una particolare tipologia di vela prodiera avente una superficie ridotta utilizzata in caso di condizioni meteo marine avverse.,VERO,F,FALSO,V,2.2.1-17,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+117,,Il genoa o genova è la vela prodiera avente una superficie che non si sovrappone a quella della randa.,VERO,F,FALSO,V,2.2.1-18,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+118,,Il genoa (o genova) oltrepassa l'albero verso poppa fino a una lunghezza generalmente pari al 50% della distanza fra l'albero e il punto di mura .,VERO,V,FALSO,F,2.2.1-19,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+119,,Il fiocco è la vela prodiera avente una superficie che non si sovrappone a quella della randa.,VERO,V,FALSO,F,2.2.1-20,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+120,,"Lo spinnaker rappresenta la vela principale, utilizzata in particolar modo nelle andature di bolina al fine di dare maggiore potenza e superficie velica.",VERO,F,FALSO,V,2.2.1-21,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+121,,Il gennaker è una vela asimmetrica adatta alle andature comprese tra il traverso e il lasco (60°- 120° dal vento).,VERO,V,FALSO,F,2.2.1-22,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+122,,Il code 0 è una vela asimmetrica adatta alle andature con poco vento comprese tra la bolina larga e il traverso.,VERO,V,FALSO,F,2.2.1-23,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+123,,Il code 0 è una vela inferita.,VERO,F,FALSO,V,2.2.1-24,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+124,,Lo sloop è l'armo caratterizzato dalla presenza di un solo albero e la possibilità di issare una sola vela di prua alla volta.,VERO,V,FALSO,F,2.2.1-25,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+125,,"Il cutter è l'armo caratterizzato dalla presenza di un solo albero, armato con due fiocchi contemporaneamente.",VERO,V,FALSO,F,2.2.1-26,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+126,,Il ketch è quell'armo caratterizzato dalla presenza dell'albero di mezzana a proravia dell'asse del timone.,VERO,V,FALSO,F,2.2.1-27,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+127,,Tra le manovre fisse vi sono  drizze e scotte.,VERO,F,FALSO,V,2.2.1-28,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+128,,Tra le manovre correnti vi sono stralli e sartie.,VERO,F,FALSO,V,2.2.1-29,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+129,,Il paranco di scotta assolve la funzione di demoltiplicare lo sforzo.,VERO,V,FALSO,F,2.2.1-30,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+130,Figura 102,Quello rappresentato in figura è un paranco con un rapporto 6:1,VERO,F,FALSO,V,2.2.1-31,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+131,Figura 103,"Quello rappresentato in figura è un paranco doppio con il rapporto più favorevole, il cosiddetto ""fino"" di 8:1.",VERO,V,FALSO,F,2.2.1-32,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+132,,"Il cunningham assolve la funzione  di porre in tensione la parte prodiera bassa della randa, mediante un paranco verticale.",VERO,V,FALSO,F,2.2.1-33,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+133,,Il tangone è il pennone sul quale è fissata la base della randa.,VERO,F,FALSO,V,2.2.1-34,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+134,,Il winch è un particolare meccanismo costituito da due bozzelli utilizzato per moltiplicare lo sforzo di trazione esercitato sulle cime.,VERO,F,FALSO,V,2.2.1-35,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+135,,"Le scotte devono essere avvolte intorno al tamburo  del winch sempre in senso orario, ponendo particolare attenzione per evitare la sovrapposizione dei ""colli"".",VERO,V,FALSO,F,2.2.1-36,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+136,,"La ferramenta di bordo è costituita dall'insieme di elementi come strozzascotte, winch, arridatori e galloccie.",VERO,V,FALSO,F,2.2.1-37,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+137,,Il polipropilene è utilizzato solo per sagole galleggianti utilizzate per il salvataggio.,VERO,V,FALSO,F,2.2.1-38,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+138,,I grilli assumono la funzione di ridurre o sforzo di trazione sui cavi.,VERO,F,FALSO,V,2.2.1-39,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+139,,Il carrello di randa (o trasto) è il congegno sul quale vengono date volta e bloccate le scotte della randa.,VERO,F,FALSO,V,2.2.1-40,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+140,,La galloccia è il dispositivo con cui si fissano le draglie.,VERO,F,FALSO,V,2.2.1-41,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+141,,La landa è il cavallotto o la piastra collocata in coperta utilizzata per fissare le sartie e gli stralli.,VERO,V,FALSO,F,2.2.1-42,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+142,,Il golfare è il carrello del boma dove si innesta la randa.,VERO,F,FALSO,V,2.2.1-43,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+143,,La varea del tangone è l'anello di attacco del mantiglio.,VERO,F,FALSO,V,2.2.1-44,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+144,,La trozza è lo snodo che unisce il boma all'albero.,VERO,V,FALSO,F,2.2.1-45,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+145,,"La resistenza alla trazione rappresenta una qualità importante nelle fibre del tessuto di una vela, determinandone la stabilità trasversale.",VERO,V,FALSO,F,2.2.1-46,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+146,,Il dacron non è un materiale correntemente diffuso per la realizzazione di vele da crociera.,VERO,F,FALSO,V,2.2.1-47,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+147,,L'esposizione molto prolungata delle vele ai raggi solari ne determina il decadimento delle sue caratteristiche meccaniche di resistenza.,VERO,V,FALSO,F,2.2.1-48,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+148,,"Il set di vele standard di un catamarano è formato da  randa, fiocco e gennaker.",VERO,V,FALSO,F,2.2.1-49,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+149,,Il set di vele base di uno scafo armato a sloop è formato da randa e genoa (o genova).,VERO,V,FALSO,F,2.2.1-50,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+150,,I garrocci sono gli specifici moschettoni che consentono di fissare il lato prodiero del genoa e del fiocco  allo strallo di prua.,VERO,V,FALSO,F,2.2.1-51,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+151,,La funzione del paterazzo è di regolare il vang.,VERO,F,FALSO,V,2.2.1-52,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+152,,Cazzando il paterazzo si determina un rilevante smagrimento della parte centrale della randa.,VERO,V,FALSO,F,2.2.1-53,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+153,,La gassa d'amante è un nodo che tende a sciogliersi facilmente.,VERO,F,FALSO,V,2.2.1-54,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+154,,La gassa d'amante si usa per accorciare una cima.,VERO,F,FALSO,V,2.2.1-55,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+155,,E' opportuno utilizzare il nodo piano per unire due cavi aventi diverso diametro.,VERO,F,FALSO,V,2.2.1-56,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+156,,La funzione di un nodo savoia è impedire che l'estremità di un cavo si sfili da un passacavo.,VERO,V,FALSO,F,2.2.1-57,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+157,,Il nodo parlato è utile per fissare i parabordi alle draglie.,VERO,V,FALSO,F,2.2.1-58,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+158,,Il nodo margherita si usa per accorciare una cima.,VERO,V,FALSO,F,2.2.1-59,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+159,,Per lazy jack si intende una particolare drizza utilizzata per issare le vele in condizioni di emergenza.,VERO,F,FALSO,V,2.2.1-60,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+160,,Per lazy jack si intende il sistema di sagole che aiuta a raccogliere la randa in fase di ammainata.,VERO,V,FALSO,F,2.2.1-61,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+161,,Il feeder è il dispositivo utilizzato al fine di facilitare l'introduzione dell'inferitura del fiocco o del genoa all'interno della canaletta dello strallo cavo.,VERO,V,FALSO,F,2.2.1-62,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+162,,Il tesabase è il dispositivo finalizzato a mantenere tesata la base del fiocco.,VERO,F,FALSO,V,2.2.1-63,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+163,,"Le manovre necessarie all'uso dello spinnaker sono scotta, spring, vang, borosa e  meolo del tangone.",VERO,F,FALSO,V,2.2.1-64,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+164,,"Per braccio si intende il cavo utilizzato per manovrare e, quindi, regolare la mura dello spinnaker.",VERO,V,FALSO,F,2.2.1-65,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+165,,Il matafione è un fiocco di rispetto utilizzato in condizioni meteo marine avverse.,VERO,F,FALSO,V,2.2.1-66,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+166,,"Per impiombatura si intende l'intreccio dei trefoli delle estremità di cavi tessili o in acciaio, al fine di unirli tra di loro o per realizzare un anello fisso a cui agganciare le ferramenta o le manovre.",VERO,V,FALSO,F,2.2.1-67,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+167,,Per borosa si intende la parte terminale superiore dello strallo cavo che lo collega all'albero.,VERO,F,FALSO,V,2.2.1-68,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+168,,"Le sartie, sono i cavi generalmente in acciaio (ma anche in fibre tessili particolarmente tenaci), che sostengono l'albero.",VERO,V,FALSO,F,2.2.1-69,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+169,,Il tornichetto è un congegno utilizzato per unire due cime di diverso materiale.,VERO,F,FALSO,V,2.2.1-70,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+170,,Il vang è un sistema di ritenuta del boma di tipo regolabile che assolve a due funzioni principali: regola la flessione longitudinale dell'albero e influenza la superficie portante della vela.,VERO,V,FALSO,F,2.2.1-71,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+171,,All'interno dell'albero si possono far passare le manovre fisse come sartie e stralli.,VERO,F,FALSO,V,2.2.1-72,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+172,,L'avvolgiranda è un'attrezzatura che permette di riporre la randa in un gavone una volta terminata la navigazione.,VERO,F,FALSO,V,2.2.1-73,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+173,,La regolazione dell'albero viene effettuata con l'unità all'ormeggio agendo su ogni singola manovra corrente in stretta aderenza a quanto indicato dal costruttore.,VERO,F,FALSO,V,2.2.1-74,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+174,,"Le manovre correnti sono quelle che servono a manovrare le vele, come le scotte, drizze, wang, tesa base ecc.",VERO,V,FALSO,F,2.2.1-75,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+175,,Un winch self-tailing è un verricello elettronico comandato dalla timoneria per il quale non è necessario l'uso della maniglia.,VERO,F,FALSO,V,2.2.1-76,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+176,,Stralli e sartie sono manovre fisse.,VERO,V,FALSO,F,2.2.1-77,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+177,,Girando la maniglia in senso orario il winch sostiene una migliore trazione e potenza.,VERO,V,FALSO,F,2.2.1-78,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+178,,Il motivo per cui il grillo della penna di randa è del tipo con perno di blocco è per consentire di sganciare la vela evitando che lo stesso cada in mare.,VERO,V,FALSO,F,2.2.1-79,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+179,,La calza è una sorta di tubo di tela con il quale si raccoglie lo spinnaker o il gennaker prima di ammainarlo.,VERO,V,FALSO,F,2.2.1-80,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+180,,Con il fiocco autovirante è necessario cazzare la scotta in virata.,VERO,F,FALSO,V,2.2.1-81,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+181,,Con il fiocco autovirante la scotta è generalmente rinviata a una puleggia sull'albero.,VERO,V,FALSO,F,2.2.1-82,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+182,,Con il genoa avvolgibile ridotto oltre il 30% della superficie si ha una sensibile riduzione di efficienza del profilo.,VERO,V,FALSO,F,2.2.1-83,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+183,,L'avvolgifiocco e il moderno sistema che consente di ridurre la vela di prua senza ammainarla.,VERO,V,FALSO,F,2.2.1-84,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+184,,Lo stopper è la manovra con cui si fissa il boma in posizione di riposo.,VERO,F,FALSO,V,2.2.1-85,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+185,,Lo stopper è il sistema di bloccaggio che consente di strozzare una drizza.,VERO,V,FALSO,F,2.2.1-86,VELA,ATTREZZATURA,ATTREZZATURA DELLE UNITA' A VELA
+186,,"Per ""sventare"" si intende la manovra tesa a condurre l'unità navale con la prua al vento o a mollare le scotte, in modo che le vele non siano portanti",VERO,V,FALSO,F,2.3.1-1,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+187,,"Per ""sventare"" si intende la manovra tesa a condurre l'unità navale con la poppa al vento.",VERO,F,FALSO,V,2.3.1-2,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+188,,Con timone a barra per poggiare è necessario porre la barra del timone sopravento ossia dalla parte opposta rispetto alla randa.,VERO,V,FALSO,F,2.3.1-3,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+189,,Con timone a barra per poggiare è necessario porre la barra del timone sottovento ossia dallo stesso lato della randa.,VERO,F,FALSO,V,2.3.1-4,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+190,,"Quando due unità navali a vela navigano di bolina con rotte convergenti, quella con le mure a sinistra poggierà per lasciare la rotta libera a quella con le mure a dritta, passandole di poppa.",VERO,V,FALSO,F,2.3.1-5,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+191,,"Quando due unità navali a vela navigano di bolina con rotte convergenti, quella più lenta lascierà la rotta libera a quella più veloce, passandole di poppa.",VERO,F,FALSO,V,2.3.1-6,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+192,,"Quando due unità navali a vela navigano di bolina entrambe con le stesse mure, quella sopravento orzerà per lasciare la rotta libera a quella sottovento.",VERO,V,FALSO,F,2.3.1-7,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+193,,"Dopo aver tesato la drizza della randa, la base della stessa può essere cazzata, poco o molto, a seconda che si vogliano assumere rispettivamente andature larghe o di bolina.",VERO,V,FALSO,F,2.3.1-8,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+194,,L'abbattuta è la manovra mediante la quale l'unità a vela cambia mure attraversando con la poppa la direzione da cui proviene il vento.,VERO,V,FALSO,F,2.3.1-9,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+195,,La virata è  la manovra per evitare un ostacolo.,VERO,F,FALSO,V,2.3.1-10,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+196,,La virata è la manovra usata per raggiungere una meta navigando con il vento in fil di ruota.,VERO,F,FALSO,V,2.3.1-11,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+197,,L'abbattuta si esegue quando la barca è alla massima velocità e naviga con andatura al traverso o di bolina.,VERO,F,FALSO,V,2.3.1-12,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+198,,"Per armare la randa: si collega la borosa all'angolo di mura, si tesa la base e si chiude lo stopper della scotta.",VERO,F,FALSO,V,2.3.1-13,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+199,,Il punto di mura è posizionato sulla varea del boma.,VERO,F,FALSO,V,2.3.1-14,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+200,,"Si arma la randa cazzando il meolo, inserendo la tavoletta all'interno dell'apposita tasca posta sulla parte più alta dell'albero.",VERO,F,FALSO,V,2.3.1-15,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+201,,"Dopo aver lascato la drizza della randa, la base della stessa può essere lascata, poco o molto, a seconda che si vogliano assumere andature in bolina o bolina larga.",VERO,F,FALSO,V,2.3.1-16,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+202,,"Genoa (o genova) e fiocco si armano allo stesso modo perché  hanno, in generale, lo stesso punto di mura nonché risultano inferiti al medesimo strallo.",VERO,V,FALSO,F,2.3.1-17,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+203,,La prima operazione necessaria per issare il fiocco o il genoa (o genova) munito di garocci è fissare l'occhiello di bugna nell'apposito attacco ubicato alla base dello strallo.,VERO,F,FALSO,V,2.3.1-18,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+204,,I garrocci di cui è munito il fiocco vanno incocciati allo strallo partendo dal punto di penna e proseguendo verso il punto di scotta.,VERO,F,FALSO,V,2.3.1-19,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+205,,Il dispositivo solitamente utilizzato per agganciare la drizza alla penna è un moschettone impiombato alla drizza stessa.,VERO,V,FALSO,F,2.3.1-20,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+206,,"Il nodo utilizzato solitamente per fissare le due scotte alla bugna del fiocco, una per lato, è il parlato doppio.",VERO,F,FALSO,V,2.3.1-21,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+207,,La barca viene condotta con la prua al vento al fine di consentire che il fiocco non si gonfi mentre viene issato.,VERO,V,FALSO,F,2.3.1-22,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+208,,Lo strallo cavo offre il vantaggio di abbassare il centro velico del fiocco.,VERO,F,FALSO,V,2.3.1-23,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+209,,La doppia canaletta di uno strallo cavo serve per facilitare la sostituzione di una vela di prua.,VERO,V,FALSO,F,2.3.1-24,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+210,,Issare la tormentina è la manovra che può essere adottata al fine di ridurre la velocità risalendo il vento,VERO,F,FALSO,V,2.3.1-25,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+211,,La manovra che può essere adottata al fine di ridurre la velocità nelle andature portanti è far fileggiare la randa.,VERO,F,FALSO,V,2.3.1-26,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+212,,"La manovra denominata ""mettersi in panna"" serve per aumentare la velocità.",VERO,F,FALSO,V,2.3.1-27,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+213,,"La manovra denominata ""mettersi in panna"" consiste nel porre a collo la vela di prua lasciando la randa bordata per la bolina larga nonché ponendo il timone all'orza.",VERO,V,FALSO,F,2.3.1-28,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+214,,"La manovra denominata ""mettersi alla cappa"" consiste in una particolare tecnica che consente di navigare a velocità ridotta utilizzando l'ancora galleggiante filata di poppa.",VERO,F,FALSO,V,2.3.1-29,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+215,,"Per ""mano o presa di terzaroli"" si intende la manovra per abbassare il tangone e smagrire lo spinnaker, passando dall'andatura in fil di ruota al traverso.",VERO,F,FALSO,V,2.3.1-30,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+216,,"La ""presa di terzaroli"" consiste nell'ammainare completamente la randa ed issare al suo posto la randa di rispetto denominata matafione.",VERO,F,FALSO,V,2.3.1-31,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+217,,"Per ""mettere a segno"" le vele si intende l'avvolgerle correttamente dopo l'utilizzo in navigazione per il loro successivo pronto impiego.",VERO,F,FALSO,V,2.3.1-32,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+218,,Il vantaggio della planata è l'aumento del dislocamento dell'unità.,VERO,F,FALSO,V,2.3.1-33,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+219,,Quando la barca si dispone con la prua al vento le vele smagriscono disponendosi trasversalmente all'asse longitudinale dell'unità e orientandosi nella direzione di provenienza del vento apparente.,VERO,F,FALSO,V,2.3.1-34,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+220,,"La manovra denominata ""strallare"" consiste nel ruotare il tangone verso la parte prodiera dell'unità navale conducendone l'estremità libera in prossimità dello strallo.",VERO,V,FALSO,F,2.3.1-35,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+221,,"La manovra denominata ""quadrare"" consiste nel ruotare il tangone verso la parte prodiera dell'unità navale conducendone l'estremità libera in prossimità dello strallo.",VERO,F,FALSO,V,2.3.1-36,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+222,,"Per poggiare si intende variare la prua dell'unità, allontanando la prua della stessa rispetto alla direzione di provenienza del vento.",VERO,V,FALSO,F,2.3.1-37,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+223,,Per orzare si intende variare la rotta dell'unità navale assumendo un nuovo valore di rotta opposto a quello della direzione di provenienza del vento.,VERO,F,FALSO,V,2.3.1-38,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+224,,Per sventare si intende la manovra tesa a condurre l'unità navale con la poppa al vento.,VERO,F,FALSO,V,2.3.1-39,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+225,,La virata e l'abbattuta sono le manovre fondamentali per cambiare mure.,VERO,V,FALSO,F,2.3.1-40,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+226,,La virata è la  manovra mediante la quale l'unità  a vela si appresta ad ammainare lo spinnaker.,VERO,F,FALSO,V,2.3.1-41,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+227,,Per poggiare è necessario porre la barra al centro,VERO,F,FALSO,V,2.3.1-42,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+228,,"Quando due unità a vela navigano di bolina con rotte convergenti, quella più lenta lascerà la rotta libera a quella più veloce, passandole di poppa.",VERO,F,FALSO,V,2.3.1-43,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+229,,"Se due unità a vela navigano entrambe con stesse mura, ha la precedenza quella che si trova sottovento.",VERO,V,FALSO,F,2.3.1-44,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+230,,"Se due unità a vela navigano di bolina con rotte convergenti, quella con mure a sinistra ha la precedenza.",VERO,F,FALSO,V,2.3.1-45,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+231,,"Se due unità navigano a vela con mure diverse (una a sinistra e l'altra a dritta), ha la precedenza chi prende il vento a sinistra.",VERO,F,FALSO,V,2.3.1-46,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+232,,"Se due unità navigano a vela  con mure diverse (una a sinistra e l'altra a dritta), ha la precedenza chi prende il vento a dritta.",VERO,V,FALSO,F,2.3.1-47,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+233,,"Se due unità navigano a vela su rotte opposte, quella che ha il vento sulla sinistra deve lasciare libera la rotta all'altra.",VERO,V,FALSO,F,2.3.1-48,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+234,,"Se un'unità con il vento sulla sinistra vede un'altra unità a vela sopravento e non può stabilire con sicurezza se questa abbia il vento  sulla  sinistra o sulla dritta, deve  manovrare in modo da lasciare libera la rotta .",VERO,V,FALSO,F,2.3.1-49,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+235,,"Navigando di bolina stretta, si può ridurre temporaneamente la velocità stingendo il vento oltre l'angolo di bordeggio.",VERO,V,FALSO,F,2.3.1-50,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+236,,Poggiando da bolina stretta a bolina larga la barca accelera.,VERO,V,FALSO,F,2.3.1-51,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+237,,"Per ridurre lo sbandamento, si smagriscono le vele, cazzando il cunnincham e il tesabase della randa, la drizza del genoa e si arretra il punto di scotta del genoa (o genova).",VERO,V,FALSO,F,2.3.1-52,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+238,,"Per aumentare la potenza con vento debole si smagriscono le vele, cazzando il cunnincham e il tesabase della randa, la drizza del genoa e si arretra il punto di scotta del genoa (o genova).",VERO,F,FALSO,V,2.3.1-53,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+239,,"La ""messa a segno"" delle vele si ottiene quando le vele sono completamente poste a riva.",VERO,F,FALSO,V,2.3.1-54,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+240,,"Per ridurre lo sbandamento sotto raffica si muove il carrello (trasto) della randa sottovento o, in assenza del carrello, si lasca la scotta.",VERO,V,FALSO,F,2.3.1-55,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+241,,Per assecondare una rapida poggiata per evitare un ostacolo devo lascare solo il fiocco.,VERO,F,FALSO,V,2.3.1-56,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+242,,La ritenuta del boma è quella manovra che si può utilizzare per evitare la strambata nelle andature di granlasco e giardinetto.,VERO,V,FALSO,F,2.3.1-57,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+243,,"In caso di aumento del vento, riducendo la randa si diminuisce la tendenza orziera dell'unità.",VERO,V,FALSO,F,2.3.1-58,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+244,,Quando si comincia a pensare se sia il caso di ridurre la vela a causa dell'eccessivo sbandamento è probabilmente il momento di farlo.,VERO,V,FALSO,F,2.3.1-59,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+245,,E' certamente opportuno ridurre la vela se la barca ha stabilmente la falchetta in acqua.,VERO,V,FALSO,F,2.3.1-60,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+246,,La strambata è il rischio più grande che si corre navigando al gran lasco o in poppa (giardinetto).,VERO,V,FALSO,F,2.3.1-61,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+247,,Strambata e abbattuta  sono la stessa cosa.,VERO,F,FALSO,V,2.3.1-62,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+248,,La strambata è l'abbattuta involontaria e incontrollata.,VERO,V,FALSO,F,2.3.1-63,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+249,,"Salvo le ordinanze locali, di norma è possibile entrare in un porto navigando a vela.",VERO,F,FALSO,V,2.3.1-64,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
+250,,Lascare la randa agevola la poggiata.,VERO,V,FALSO,F,2.3.1-65,VELA,MANOVRE,MANOVRE DELLE UNITA' A VELA
