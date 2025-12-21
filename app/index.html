@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Patente Nautica</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header id="app-header">
+            <h1>Quiz Patente Nautica</h1>
+        </header>
+
+        <!-- Setup Screen -->
+        <div id="setup-screen" class="screen active">
+            <div class="setup-section">
+                <h2>Tipo di Quiz</h2>
+                <div class="radio-group">
+                    <label>
+                        <input type="radio" name="quiz-type" value="base" checked>
+                        Quiz Base (3 risposte)
+                    </label>
+                    <label>
+                        <input type="radio" name="quiz-type" value="vela">
+                        Quiz Vela (Vero/Falso)
+                    </label>
+                    <label>
+                        <input type="radio" name="quiz-type" value="both">
+                        Entrambi
+                    </label>
+                </div>
+            </div>
+
+            <div class="setup-section">
+                <h2>Ordine</h2>
+                <div class="radio-group">
+                    <label>
+                        <input type="radio" name="quiz-order" value="sequential" checked>
+                        Sequenziale
+                    </label>
+                    <label>
+                        <input type="radio" name="quiz-order" value="random">
+                        Casuale
+                    </label>
+                </div>
+            </div>
+
+            <button id="start-quiz-btn" class="btn btn-primary">Inizia Quiz</button>
+        </div>
+
+        <!-- Quiz Screen -->
+        <div id="quiz-screen" class="screen">
+            <div class="quiz-header">
+                <div class="quiz-info">
+                    <span id="quiz-counter">Quiz 1 / 100</span>
+                    <span id="quiz-id" class="quiz-id">ID: 1</span>
+                </div>
+                <button id="back-to-setup-btn" class="btn btn-secondary">Torna alla Selezione</button>
+            </div>
+
+            <div class="quiz-content">
+                <div id="quiz-image-container" class="quiz-image-container hidden">
+                    <img id="quiz-image" alt="Quiz Image">
+                </div>
+
+                <div class="quiz-question">
+                    <p id="quiz-question-text"></p>
+                </div>
+
+                <div id="quiz-answers" class="quiz-answers">
+                    <!-- Answers will be dynamically inserted here -->
+                </div>
+            </div>
+
+            <div class="quiz-navigation">
+                <button id="prev-btn" class="btn btn-secondary">← Precedente</button>
+                <button id="next-btn" class="btn btn-primary" disabled>Successivo →</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
