@@ -2,6 +2,13 @@
 
 Un'applicazione web per esercitarsi con i quiz della patente nautica.
 
+## Demo
+
+[![Open Boatwise](https://img.shields.io/badge/Open-Boatwise-blue)](https://leocencetti.github.io/Boatwise/)
+
+Click the button above to use the app now.
+
+
 ## Caratteristiche
 
 - **Due tipologie di quiz:**
