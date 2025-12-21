@@ -143,8 +143,8 @@ header h1 {
 }
 
 #start-quiz-btn {
-    width: 100%;
-    margin-top: 20px;
+    width: auto; /* Let flex: 1 from inline style decide final width */
+    margin-top: 0; /* Align height with the sibling button */
 }
 
 /* Quiz Screen */
@@ -204,11 +204,39 @@ header h1 {
     display: none;
 }
 
+.quiz-image-container.loading {
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f7fafc;
+    border-radius: 8px;
+}
+
+.quiz-image-container.loading::after {
+    content: '';
+    width: 40px;
+    height: 40px;
+    border: 4px solid #e2e8f0;
+    border-top-color: #667eea;
+    border-radius: 50%;
+    animation: spinner 0.8s linear infinite;
+}
+
+@keyframes spinner {
+    to { transform: rotate(360deg); }
+}
+
 .quiz-image-container img {
     max-width: 100%;
     max-height: 250px;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: block;
+}
+
+.quiz-image-container img.loading {
+    display: none;
 }
 
 .quiz-question {
@@ -273,7 +301,8 @@ header h1 {
     opacity: 0.7;
 }
 
-.quiz-navigation {
+.quiz-navigation,
+.setup-navigation {
     display: flex;
     justify-content: space-between;
     gap: 15px;
@@ -284,8 +313,251 @@ header h1 {
     padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
-.quiz-navigation .btn {
+.quiz-navigation .btn,
+.setup-navigation .btn {
     flex: 1;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.modal-header h2 {
+    color: #2d3748;
+    font-size: 1.3em;
+    margin: 0;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 2em;
+    color: #a0aec0;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+    color: #2d3748;
+}
+
+.modal-body {
+    padding: 20px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.modal-footer {
+    padding: 20px;
+    border-top: 2px solid #e2e8f0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-small {
+    padding: 8px 16px;
+    font-size: 0.9em;
+}
+
+.filter-actions {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.filter-actions .btn {
+    flex: 1;
+}
+
+.filter-tree {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.filter-chapter {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.filter-chapter-label {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 8px;
+    font-weight: 700;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.05em;
+    position: relative;
+}
+
+.filter-chapter-label:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+}
+
+.filter-chapter-label input[type="checkbox"] {
+    margin-right: 12px;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.filter-chapter-label .collapse-icon {
+    margin-right: 8px;
+    font-size: 0.8em;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+}
+
+.filter-chapter.collapsed .collapse-icon {
+    transform: rotate(-90deg);
+}
+
+.filter-themes {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-left: 15px;
+    padding-left: 15px;
+    border-left: 3px solid #667eea;
+    overflow: hidden;
+    max-height: 5000px;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+.filter-chapter.collapsed .filter-themes {
+    max-height: 0;
+    opacity: 0;
+}
+
+.filter-theme {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.filter-theme-label {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background: #edf2f7;
+    border-radius: 6px;
+    font-weight: 600;
+    color: #2d3748;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    position: relative;
+}
+
+.filter-theme-label:hover {
+    background: #e2e8f0;
+}
+
+.filter-theme-label input[type="checkbox"] {
+    margin-right: 10px;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.filter-theme-label .collapse-icon {
+    margin-right: 8px;
+    font-size: 0.75em;
+    color: #4a5568;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+}
+
+.filter-theme.collapsed .collapse-icon {
+    transform: rotate(-90deg);
+}
+
+.filter-entries {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-left: 20px;
+    padding-left: 15px;
+    border-left: 2px solid #e2e8f0;
+    overflow: hidden;
+    max-height: 5000px;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+.filter-theme.collapsed .filter-entries {
+    max-height: 0;
+    opacity: 0;
+}
+
+.filter-entry-label {
+    display: flex;
+    align-items: center;
+    padding: 8px 10px;
+    background: #f7fafc;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-size: 0.95em;
+    color: #4a5568;
+}
+
+.filter-entry-label:hover {
+    background: #edf2f7;
+}
+
+.filter-entry-label input[type="checkbox"] {
+    margin-right: 10px;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    flex-shrink: 0;
 }
 
 /* Responsive Design */
@@ -330,7 +602,8 @@ header h1 {
         font-size: 0.9em;
     }
 
-    .quiz-navigation {
+    .quiz-navigation,
+    .setup-navigation {
         flex-direction: column;
         gap: 10px;
     }

@@ -1,13 +1,20 @@
 // Application State
 const state = {
-    quizType: 'base',
     quizOrder: 'sequential',
     allQuizzes: [],
     currentIndex: 0,
     selectedAnswer: null,
     answeredQuizzes: new Map(), // Maps quiz index to {answerIndex, isCorrect}
     correctCount: 0,
-    incorrectCount: 0
+    incorrectCount: 0,
+    filters: {
+        chapters: new Set(),
+        themes: new Set(),
+        entries: new Set()
+    },
+    availableFilters: {
+        chapters: new Map() // Map of chapter -> Map of theme -> Set of entries
+    }
 };
 
 const DATA_ROOT = './data';
@@ -26,6 +33,93 @@ const quizQuestionText = document.getElementById('quiz-question-text');
 const quizAnswers = document.getElementById('quiz-answers');
 const prevBtn = document.getElementById('prev-btn');
 const nextBtn = document.getElementById('next-btn');
+const filterModal = document.getElementById('filter-modal');
+const openFilterBtn = document.getElementById('open-filter-btn');
+const closeFilterBtn = document.getElementById('close-filter-btn');
+const applyFilterBtn = document.getElementById('apply-filter-btn');
+const selectAllBtn = document.getElementById('select-all-btn');
+const deselectAllBtn = document.getElementById('deselect-all-btn');
+const filterTree = document.getElementById('filter-tree');
+const resetCacheBtn = document.getElementById('reset-cache-btn');
+
+// Cookie utilities
+const OPTIONS_COOKIE = 'boatwise_options';
+const SESSION_COOKIE = 'boatwise_session';
+
+// Fallback to localStorage if cookies don't work (e.g., file:// protocol)
+function isCookiesAvailable() {
+    try {
+        const test = '__test__';
+        document.cookie = `${test}=1; path=/`;
+        const hasCookie = document.cookie.includes(test);
+        document.cookie = `${test}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/`;
+        return hasCookie;
+    } catch (e) {
+        return false;
+    }
+}
+
+const USE_COOKIES = isCookiesAvailable();
+
+function setCookie(name, value, days = 30) {
+    try {
+        if (USE_COOKIES) {
+            const expires = new Date(Date.now() + days * 24 * 60 * 60 * 1000).toUTCString();
+            const cookieValue = encodeURIComponent(value);
+            const fullCookie = `${encodeURIComponent(name)}=${cookieValue}; expires=${expires}; path=/; SameSite=Lax`;
+            document.cookie = fullCookie;
+            // Verify it was actually set; warn only if missing
+            const allCookies = document.cookie;
+            const cookieSet = allCookies.includes(encodeURIComponent(name));
+            if (!cookieSet) {
+                console.warn(`[setCookie] WARNING: Cookie '${name}' was not found after setting!`);
+            }
+        } else {
+            localStorage.setItem(name, value);
+        }
+    } catch (e) {
+        console.warn('Failed to set storage', name, e);
+    }
+}
+
+function getCookie(name) {
+    try {
+        if (USE_COOKIES) {
+            const cookieString = document.cookie || '';
+            const encodedName = encodeURIComponent(name) + '=';
+            const parts = cookieString.split(';');
+            for (const part of parts) {
+                const trimmed = part.trim();
+                if (trimmed.startsWith(encodedName)) {
+                    try {
+                        return decodeURIComponent(trimmed.substring(encodedName.length));
+                    } catch (e) {
+                        console.warn('Failed to decode cookie value', name, e);
+                        return null;
+                    }
+                }
+            }
+            return null;
+        } else {
+            return localStorage.getItem(name);
+        }
+    } catch (e) {
+        console.warn('Failed to get storage', name, e);
+        return null;
+    }
+}
+
+function deleteCookie(name) {
+    try {
+        if (USE_COOKIES) {
+            document.cookie = `${encodeURIComponent(name)}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/`;
+        } else {
+            localStorage.removeItem(name);
+        }
+    } catch (e) {
+        console.warn('Failed to delete storage', name, e);
+    }
+}
 
 // CSV Parsing Function
 function parseCSV(text) {
@@ -115,38 +209,85 @@ async function loadQuizData() {
 async function initializeApp() {
     const quizData = await loadQuizData();
 
+    // Extract available filters from quiz data
+    extractFilters(quizData);
+
+    // Load options and session from cookies (resume if available)
+    loadOptionsFromCookie();
+    buildFilterUI();
+    const resumed = loadSessionFromCookie(quizData);
+
     // Setup event listeners
     startQuizBtn.addEventListener('click', () => startQuiz(quizData));
     backToSetupBtn.addEventListener('click', backToSetup);
     prevBtn.addEventListener('click', navigatePrevious);
     nextBtn.addEventListener('click', navigateNext);
+    openFilterBtn.addEventListener('click', openFilterModal);
+    closeFilterBtn.addEventListener('click', closeFilterModal);
+    applyFilterBtn.addEventListener('click', applyFilters);
+    selectAllBtn.addEventListener('click', selectAllFilters);
+    deselectAllBtn.addEventListener('click', deselectAllFilters);
+    resetCacheBtn.addEventListener('click', resetResponseCache);
 
-    // Quiz type radio buttons
-    document.querySelectorAll('input[name="quiz-type"]').forEach(radio => {
-        radio.addEventListener('change', (e) => {
-            state.quizType = e.target.value;
-        });
+    // Close modal on backdrop click
+    filterModal.addEventListener('click', (e) => {
+        if (e.target === filterModal) {
+            closeFilterModal();
+        }
     });
 
     // Quiz order radio buttons
     document.querySelectorAll('input[name="quiz-order"]').forEach(radio => {
         radio.addEventListener('change', (e) => {
             state.quizOrder = e.target.value;
+            saveOptionsToCookie();
         });
     });
+
+    // Initialize quizOrder from the currently checked radio (default is Sequenziale)
+    const checkedOrder = document.querySelector('input[name="quiz-order"]:checked');
+    if (checkedOrder) {
+        state.quizOrder = checkedOrder.value;
+    }
 }
 
 // Start Quiz
 function startQuiz(quizData) {
-    // Prepare quiz list based on selected type
-    let quizzes = [];
+    // Start with all quizzes (both base and vela)
+    let quizzes = [...quizData.base, ...quizData.vela];
 
-    if (state.quizType === 'base') {
-        quizzes = [...quizData.base];
-    } else if (state.quizType === 'vela') {
-        quizzes = [...quizData.vela];
-    } else if (state.quizType === 'both') {
-        quizzes = [...quizData.base, ...quizData.vela];
+    // Apply filters if any are selected
+    if (state.filters.chapters.size > 0 || state.filters.themes.size > 0 || state.filters.entries.size > 0) {
+        quizzes = quizzes.filter(quiz => {
+            const chapter = quiz.CAPITOLO?.trim();
+            const theme = quiz.TEMA?.trim();
+            const entry = quiz.VOCE?.trim();
+            
+            // If chapters are selected, quiz must match one of them
+            const chapterMatch = state.filters.chapters.size === 0 || state.filters.chapters.has(chapter);
+            // If themes are selected, quiz must match one of them
+            const themeMatch = state.filters.themes.size === 0 || state.filters.themes.has(theme);
+            // If entries are selected, quiz must match one of them
+            const entryMatch = state.filters.entries.size === 0 || state.filters.entries.has(entry);
+            
+            return chapterMatch && themeMatch && entryMatch;
+        });
+    }
+
+    // Check if any quizzes match the filters
+    if (quizzes.length === 0) {
+        alert('Nessun quiz corrisponde ai filtri selezionati. Prova a modificare i filtri.');
+        return;
+    }
+
+    // Ensure deterministic ordering for sequential mode
+    if (state.quizOrder === 'sequential') {
+        quizzes.sort((a, b) => {
+            const aid = parseInt(String(a.ID).replace(/\D/g, ''), 10);
+            const bid = parseInt(String(b.ID).replace(/\D/g, ''), 10);
+            if (Number.isFinite(aid) && Number.isFinite(bid)) return aid - bid;
+            return String(a.ID).localeCompare(String(b.ID));
+        });
     }
 
     // Randomize if needed
@@ -160,6 +301,9 @@ function startQuiz(quizData) {
     state.correctCount = 0;
     state.incorrectCount = 0;
 
+    // Save session cookie (ordered quiz list + index + answers)
+    saveSessionToCookie();
+
     // Show quiz screen
     setupScreen.classList.remove('active');
     quizScreen.classList.add('active');
@@ -167,6 +311,387 @@ function startQuiz(quizData) {
 
     // Display first quiz
     displayQuiz();
+}
+
+// Session persistence
+function saveSessionToCookie() {
+    const quizList = state.allQuizzes.map(q => ({ id: q.ID, type: q.type }));
+    const answers = [...state.answeredQuizzes.entries()].map(([i, v]) => ({ i, a: v.answerIndex, c: v.isCorrect }));
+    const payload = { list: quizList, idx: state.currentIndex, ans: answers, cc: state.correctCount, ic: state.incorrectCount, order: state.quizOrder };
+    const jsonStr = JSON.stringify(payload);
+    // Use localStorage for session (large data ~93KB exceeds 4KB cookie limit)
+    try {
+        localStorage.setItem(SESSION_COOKIE, jsonStr);
+    } catch (e) {
+        console.warn('[saveSessionToCookie] Failed to save to localStorage:', e);
+    }
+}
+
+function loadSessionFromCookie(quizData) {
+    // Try localStorage first (for large session data)
+    let raw = localStorage.getItem(SESSION_COOKIE);
+    
+    // Fallback to cookies if localStorage is empty (for backward compatibility)
+    if (!raw) {
+        raw = getCookie(SESSION_COOKIE);
+    }
+    
+    if (!raw) {
+        return false;
+    }
+    try {
+        const data = JSON.parse(raw);
+        if (!data.list || !Array.isArray(data.list) || data.list.length === 0) {
+            return false;
+        }
+        // Rebuild ordered quizzes by matching id+type
+        const byKey = new Map();
+        [...quizData.base, ...quizData.vela].forEach(q => byKey.set(`${q.type}:${q.ID}`, q));
+        const ordered = [];
+        for (const item of data.list) {
+            const key = `${item.type}:${item.id}`;
+            const q = byKey.get(key);
+            if (q) ordered.push(q);
+        }
+        if (ordered.length === 0) return false;
+        state.allQuizzes = ordered;
+        state.quizOrder = data.order || state.quizOrder;
+        state.currentIndex = Math.min(Math.max(0, data.idx || 0), ordered.length - 1);
+        state.answeredQuizzes.clear();
+        (data.ans || []).forEach(rec => {
+            state.answeredQuizzes.set(rec.i, { answerIndex: rec.a, isCorrect: rec.c });
+        });
+        // Recompute counts if not provided
+        if (typeof data.cc === 'number' && typeof data.ic === 'number') {
+            state.correctCount = data.cc;
+            state.incorrectCount = data.ic;
+        } else {
+            let cc = 0, ic = 0;
+            state.answeredQuizzes.forEach(v => { v.c ? cc++ : ic++; });
+            state.correctCount = cc;
+            state.incorrectCount = ic;
+        }
+        // Resume UI
+        setupScreen.classList.remove('active');
+        quizScreen.classList.add('active');
+        header.style.display = 'none';
+        displayQuiz();
+        return true;
+    } catch (e) {
+        console.warn('Failed to parse session cookie', e);
+        return false;
+    }
+}
+
+// Extract available filters from quiz data
+function extractFilters(quizData) {
+    const allQuizzes = [...quizData.base, ...quizData.vela];
+    const chaptersMap = new Map();
+
+    allQuizzes.forEach(quiz => {
+        const chapter = quiz.CAPITOLO?.trim();
+        const theme = quiz.TEMA?.trim();
+        const entry = quiz.VOCE?.trim();
+
+        if (chapter) {
+            if (!chaptersMap.has(chapter)) {
+                chaptersMap.set(chapter, new Map());
+            }
+            const themesMap = chaptersMap.get(chapter);
+            
+            if (theme) {
+                if (!themesMap.has(theme)) {
+                    themesMap.set(theme, new Set());
+                }
+                if (entry) {
+                    themesMap.get(theme).add(entry);
+                }
+            }
+        }
+    });
+
+    // Sort chapters alphabetically
+    state.availableFilters.chapters = new Map([...chaptersMap.entries()].sort());
+
+    // Build the filter UI
+    buildFilterUI();
+}
+
+// Build filter UI with hierarchical checkboxes (3 levels: CAPITOLO > TEMA > VOCE)
+function buildFilterUI() {
+    filterTree.innerHTML = '';
+
+    state.availableFilters.chapters.forEach((themesMap, chapter) => {
+        const chapterDiv = document.createElement('div');
+        chapterDiv.className = 'filter-chapter collapsed';
+
+        // Capitolo checkbox
+        const chapterLabel = document.createElement('label');
+        chapterLabel.className = 'filter-chapter-label';
+        
+        // Add collapse icon
+        const collapseIcon = document.createElement('span');
+        collapseIcon.className = 'collapse-icon';
+        collapseIcon.textContent = '▼';
+        chapterLabel.appendChild(collapseIcon);
+        
+        const chapterCheckbox = document.createElement('input');
+        chapterCheckbox.type = 'checkbox';
+        chapterCheckbox.dataset.chapter = chapter;
+        chapterCheckbox.checked = state.filters.chapters.has(chapter);
+        
+        const updateChapterState = () => {
+            const themeCheckboxes = [...chapterDiv.querySelectorAll('.filter-theme-label input[type="checkbox"]')];
+            const totalThemes = themeCheckboxes.length;
+            const checkedThemes = themeCheckboxes.filter(cb => cb.checked).length;
+            const hasPartialTheme = themeCheckboxes.some(cb => cb.indeterminate);
+            chapterCheckbox.checked = totalThemes > 0 && checkedThemes === totalThemes;
+            chapterCheckbox.indeterminate = (checkedThemes > 0 && checkedThemes < totalThemes) || hasPartialTheme;
+        };
+
+        chapterCheckbox.addEventListener('change', (e) => {
+            e.stopPropagation();
+            if (e.target.checked) {
+                state.filters.chapters.add(chapter);
+                // Also select all themes and entries under this chapter
+                themesMap.forEach((entries, theme) => {
+                    state.filters.themes.add(theme);
+                    entries.forEach(entry => state.filters.entries.add(entry));
+                });
+                // Update all nested checkboxes
+                chapterDiv.querySelectorAll('input[type=\"checkbox\"]').forEach(cb => cb.checked = true);
+                // Clear partial states
+                chapterDiv.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.indeterminate = false);
+            } else {
+                state.filters.chapters.delete(chapter);
+                // Also deselect all themes and entries under this chapter
+                themesMap.forEach((entries, theme) => {
+                    state.filters.themes.delete(theme);
+                    entries.forEach(entry => state.filters.entries.delete(entry));
+                });
+                // Update all nested checkboxes
+                chapterDiv.querySelectorAll('input[type=\"checkbox\"]').forEach(cb => cb.checked = false);
+                chapterDiv.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.indeterminate = false);
+            }
+            updateChapterState();
+        });
+
+        // Prevent checkbox clicks from bubbling to the label
+        chapterCheckbox.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+
+        // Add click handler to label for collapsing
+        chapterLabel.addEventListener('click', (e) => {
+            if (e.target === chapterCheckbox) return;
+            e.preventDefault();
+            chapterDiv.classList.toggle('collapsed');
+        });
+
+        chapterLabel.appendChild(chapterCheckbox);
+        chapterLabel.appendChild(document.createTextNode(chapter));
+        chapterDiv.appendChild(chapterLabel);
+
+        // Themes container
+        if (themesMap.size > 0) {
+            const themesDiv = document.createElement('div');
+            themesDiv.className = 'filter-themes';
+
+            // Sort themes alphabetically
+            const sortedThemes = [...themesMap.entries()].sort((a, b) => a[0].localeCompare(b[0]));
+
+            sortedThemes.forEach(([theme, entries]) => {
+                const themeDiv = document.createElement('div');
+                themeDiv.className = 'filter-theme collapsed';
+
+                // Theme checkbox
+                const themeLabel = document.createElement('label');
+                themeLabel.className = 'filter-theme-label';
+                
+                // Add collapse icon
+                const themeCollapseIcon = document.createElement('span');
+                themeCollapseIcon.className = 'collapse-icon';
+                themeCollapseIcon.textContent = '▼';
+                themeLabel.appendChild(themeCollapseIcon);
+                
+                const themeCheckbox = document.createElement('input');
+                themeCheckbox.type = 'checkbox';
+                themeCheckbox.dataset.theme = theme;
+                themeCheckbox.dataset.chapter = chapter;
+                themeCheckbox.checked = state.filters.themes.has(theme);
+
+                const updateThemeState = () => {
+                    const entryCheckboxes = [...themeDiv.querySelectorAll('.filter-entry-label input[type="checkbox"]')];
+                    const totalEntries = entryCheckboxes.length;
+                    const checkedEntries = entryCheckboxes.filter(cb => cb.checked).length;
+                    themeCheckbox.checked = totalEntries > 0 && checkedEntries === totalEntries;
+                    themeCheckbox.indeterminate = checkedEntries > 0 && checkedEntries < totalEntries;
+                    updateChapterState();
+                };
+                
+                themeCheckbox.addEventListener('change', (e) => {
+                    e.stopPropagation();
+                    if (e.target.checked) {
+                        state.filters.themes.add(theme);
+                        // Also select all entries under this theme
+                        entries.forEach(entry => state.filters.entries.add(entry));
+                        // Update entry checkboxes
+                        themeDiv.querySelectorAll('.filter-entry-label input').forEach(cb => cb.checked = true);
+                        
+                        updateThemeState();
+                        // Ensure chapter selection reflects current state
+                        if (chapterCheckbox.indeterminate || chapterCheckbox.checked) {
+                            state.filters.chapters.add(chapter);
+                        }
+                    } else {
+                        state.filters.themes.delete(theme);
+                        // Also deselect all entries under this theme
+                        entries.forEach(entry => state.filters.entries.delete(entry));
+                        // Update entry checkboxes
+                        themeDiv.querySelectorAll('.filter-entry-label input').forEach(cb => cb.checked = false);
+                        themeCheckbox.indeterminate = false;
+                        themeCheckbox.checked = false;
+                        updateThemeState();
+                        // If nothing selected under chapter, drop chapter from filters
+                        const anyThemeSelected = [...themesMap.keys()].some(t => state.filters.themes.has(t));
+                        if (!anyThemeSelected) {
+                            state.filters.chapters.delete(chapter);
+                        }
+                    }
+                    updateChapterState();
+                });
+
+                // Prevent checkbox clicks from bubbling to the label
+                themeCheckbox.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                });
+
+                // Add click handler to label for collapsing
+                themeLabel.addEventListener('click', (e) => {
+                    if (e.target === themeCheckbox) return;
+                    e.preventDefault();
+                    themeDiv.classList.toggle('collapsed');
+                });
+
+                themeLabel.appendChild(themeCheckbox);
+                themeLabel.appendChild(document.createTextNode(theme));
+                themeDiv.appendChild(themeLabel);
+
+                // Entries container
+                if (entries.size > 0) {
+                    const entriesDiv = document.createElement('div');
+                    entriesDiv.className = 'filter-entries';
+
+                    // Sort entries alphabetically
+                    const sortedEntries = [...entries].sort();
+
+                    sortedEntries.forEach(entry => {
+                        const entryLabel = document.createElement('label');
+                        entryLabel.className = 'filter-entry-label';
+
+                        const entryCheckbox = document.createElement('input');
+                        entryCheckbox.type = 'checkbox';
+                        entryCheckbox.dataset.entry = entry;
+                        entryCheckbox.dataset.theme = theme;
+                        entryCheckbox.dataset.chapter = chapter;
+                        entryCheckbox.checked = state.filters.entries.has(entry);
+
+                        entryCheckbox.addEventListener('change', (e) => {
+                            if (e.target.checked) {
+                                state.filters.entries.add(entry);
+                            } else {
+                                state.filters.entries.delete(entry);
+                            }
+                            updateThemeState();
+                        });
+
+                        entryLabel.appendChild(entryCheckbox);
+                        entryLabel.appendChild(document.createTextNode(entry));
+                        entriesDiv.appendChild(entryLabel);
+                    });
+
+                    themeDiv.appendChild(entriesDiv);
+                    // Initialize indeterminate state after building entries
+                    updateThemeState();
+                }
+
+                themesDiv.appendChild(themeDiv);
+            });
+
+            chapterDiv.appendChild(themesDiv);
+            // Initialize chapter state after themes are added
+            updateChapterState();
+        }
+
+        filterTree.appendChild(chapterDiv);
+    });
+}
+
+// Filter modal functions
+function openFilterModal() {
+    filterModal.classList.add('active');
+}
+
+function closeFilterModal() {
+    filterModal.classList.remove('active');
+}
+
+function applyFilters() {
+    closeFilterModal();
+    // Update button text to show filters are active
+    const filterCount = state.filters.chapters.size + state.filters.themes.size + state.filters.entries.size;
+    if (filterCount > 0) {
+        openFilterBtn.textContent = `Seleziona chapters/Temi/Voci (${filterCount} attivi)`;
+    } else {
+        openFilterBtn.textContent = 'Seleziona chapters/Temi/Voci';
+    }
+    saveOptionsToCookie();
+}
+
+function selectAllFilters() {
+    state.availableFilters.chapters.forEach((themesMap, chapter) => {
+        state.filters.chapters.add(chapter);
+        themesMap.forEach((entries, theme) => {
+            state.filters.themes.add(theme);
+            entries.forEach(entry => state.filters.entries.add(entry));
+        });
+    });
+    buildFilterUI();
+}
+
+function deselectAllFilters() {
+    state.filters.chapters.clear();
+    state.filters.themes.clear();
+    state.filters.entries.clear();
+    buildFilterUI();
+    saveOptionsToCookie();
+}
+
+// Options persistence
+function saveOptionsToCookie() {
+    const payload = {
+        order: state.quizOrder,
+        chapters: [...state.filters.chapters],
+        themes: [...state.filters.themes],
+        entries: [...state.filters.entries]
+    };
+    setCookie(OPTIONS_COOKIE, JSON.stringify(payload));
+}
+
+function loadOptionsFromCookie() {
+    const raw = getCookie(OPTIONS_COOKIE);
+    if (!raw) return;
+    try {
+        const data = JSON.parse(raw);
+        if (data.order) state.quizOrder = data.order;
+        state.filters.chapters = new Set(data.chapters || []);
+        state.filters.themes = new Set(data.themes || []);
+        state.filters.entries = new Set(data.entries || []);
+        const filterCount = state.filters.chapters.size + state.filters.themes.size + state.filters.entries.size;
+        openFilterBtn.textContent = filterCount > 0 ? `Seleziona chapters/Temi/Voci (${filterCount} attivi)` : 'Seleziona chapters/Temi/Voci';
+    } catch (e) {
+        console.warn('Failed to parse options cookie', e);
+    }
 }
 
 // Shuffle array (Fisher-Yates algorithm)
@@ -197,13 +722,33 @@ function displayQuiz() {
         const imageMatch = quiz.IMMAGINE.match(/Figura\s+(\d+)/i);
         if (imageMatch) {
             const imageNumber = imageMatch[1].padStart(3, '0');
-            quizImage.src = `${DATA_ROOT}/figures/${imageNumber}.jpg`;
+            const imageUrl = `${DATA_ROOT}/figures/${imageNumber}.jpg`;
+            
+            // Show loading state immediately
             quizImageContainer.classList.remove('hidden');
+            quizImageContainer.classList.add('loading');
+            quizImage.classList.add('loading');
+            
+            // Preload the image
+            const tempImage = new Image();
+            tempImage.onload = () => {
+                quizImage.src = imageUrl;
+                quizImage.classList.remove('loading');
+                quizImageContainer.classList.remove('loading');
+            };
+            tempImage.onerror = () => {
+                // Hide container if image fails to load
+                quizImageContainer.classList.add('hidden');
+                quizImageContainer.classList.remove('loading');
+            };
+            tempImage.src = imageUrl;
         } else {
             quizImageContainer.classList.add('hidden');
+            quizImageContainer.classList.remove('loading');
         }
     } else {
         quizImageContainer.classList.add('hidden');
+        quizImageContainer.classList.remove('loading');
     }
 
     // Display question
@@ -348,6 +893,21 @@ function selectAnswer(selectedButton, quiz) {
     displayQuiz();
     
     nextBtn.disabled = false;
+    saveSessionToCookie();
+}
+
+// Reset response cache
+function resetResponseCache() {
+    deleteCookie(SESSION_COOKIE);
+    localStorage.removeItem(SESSION_COOKIE);
+    state.answeredQuizzes.clear();
+    state.correctCount = 0;
+    state.incorrectCount = 0;
+    // Keep current quiz order and index, just clear answers and refresh UI
+    if (state.allQuizzes.length > 0) {
+        displayQuiz();
+    }
+    alert('Cache risposte eliminata. Le risposte salvate sono state cancellate.');
 }
 
 // Navigate to Previous Quiz
@@ -355,6 +915,7 @@ function navigatePrevious() {
     if (state.currentIndex > 0) {
         state.currentIndex--;
         displayQuiz();
+        saveSessionToCookie();
     }
 }
 
@@ -363,9 +924,11 @@ function navigateNext() {
     if (state.currentIndex < state.allQuizzes.length - 1) {
         state.currentIndex++;
         displayQuiz();
+        saveSessionToCookie();
     } else {
         // Quiz completed
         alert(`Quiz completato! Hai risposto a ${state.answeredQuizzes.size} domande su ${state.allQuizzes.length}.`);
+        saveSessionToCookie();
     }
 }
 
@@ -379,6 +942,7 @@ function backToSetup() {
     state.answeredQuizzes.clear();
     state.correctCount = 0;
     state.incorrectCount = 0;
+    deleteCookie(SESSION_COOKIE);
 }
 
 // Viewport height fallback for mobile browsers (iOS Safari, etc.)

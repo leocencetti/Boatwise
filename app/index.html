@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <title>Quiz Patente Nautica</title>
+    <title>⛵ Boatwise</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -15,21 +15,8 @@
         <!-- Setup Screen -->
         <div id="setup-screen" class="screen active">
             <div class="setup-section">
-                <h2>Tipo di Quiz</h2>
-                <div class="radio-group">
-                    <label>
-                        <input type="radio" name="quiz-type" value="base" checked>
-                        Quiz Base (3 risposte)
-                    </label>
-                    <label>
-                        <input type="radio" name="quiz-type" value="vela">
-                        Quiz Vela (Vero/Falso)
-                    </label>
-                    <label>
-                        <input type="radio" name="quiz-type" value="both">
-                        Entrambi
-                    </label>
-                </div>
+                <h2>Filtri Quiz</h2>
+                <button id="open-filter-btn" class="btn btn-secondary" style="width: 100%;">Seleziona chapters/Temi/Voci</button>
             </div>
 
             <div class="setup-section">
@@ -46,7 +33,32 @@
                 </div>
             </div>
 
-            <button id="start-quiz-btn" class="btn btn-primary">Inizia Quiz</button>
+            <div class="setup-navigation">
+                <button id="reset-cache-btn" class="btn btn-secondary" style="flex: 1;">Reset Risposte</button>
+                <button id="start-quiz-btn" class="btn btn-primary" style="flex: 1;">Inizia Quiz</button>
+            </div>
+        </div>
+
+        <!-- Filter Modal -->
+        <div id="filter-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Seleziona chapters, Temi e Voci</h2>
+                    <button id="close-filter-btn" class="close-btn">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="filter-actions">
+                        <button id="select-all-btn" class="btn btn-secondary btn-small">Seleziona Tutto</button>
+                        <button id="deselect-all-btn" class="btn btn-secondary btn-small">Deseleziona Tutto</button>
+                    </div>
+                    <div id="filter-tree" class="filter-tree">
+                        <!-- Filter checkboxes will be dynamically inserted here -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="apply-filter-btn" class="btn btn-primary">Applica Filtri</button>
+                </div>
+            </div>
         </div>
 
         <!-- Quiz Screen -->
