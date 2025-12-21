@@ -42,17 +42,17 @@ Un'applicazione web per esercitarsi con i quiz della patente nautica.
 ```
 Boatwise/
 ├── app/
+│   ├── data/
+│   │   ├── quiz_base.csv                 # Quiz base
+│   │   ├── quiz_vela.csv                 # Quiz vela
+│   │   ├── quiz_base.rimossi_2024.csv    # Quiz base rimossi
+│   │   └── figures/                      # Figure dei quiz
+│   │       ├── 001.jpg
+│   │       ├── 002.jpg
+│   │       └── ...
 │   ├── index.html                    # Struttura HTML dell'applicazione
 │   ├── styles.css                    # Stili e layout
 │   └── app.js                        # Logica dell'applicazione
-├── data/
-│   ├── quiz_base.csv                 # Quiz base
-│   ├── quiz_vela.csv                 # Quiz vela
-│   ├── quiz_base.rimossi_2024.csv    # Quiz base rimossi
-│   └── figures/                      # Figure dei quiz
-│       ├── 001.jpg
-│       ├── 002.jpg
-│       └── ...
 └── README.md                         # Questa documentazione
 ```
 

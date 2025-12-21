@@ -10,7 +10,7 @@ const state = {
     incorrectCount: 0
 };
 
-const DATA_ROOT = '../data';
+const DATA_ROOT = './data';
 
 // DOM Elements
 const header = document.getElementById('app-header');
