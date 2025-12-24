@@ -130,6 +130,11 @@ function deleteCookie(name) {
 }
 
 // Spaced Repetition Utilities (SM-2 Algorithm)
+function getQuizKey(quiz) {
+    // Generate a unique key for spaced repetition storage
+    return `${quiz.type}:${quiz.ID}`;
+}
+
 function initializeSpacedRepetitionItem(quizId) {
     return {
         easiness: 2.5,      // Initial easiness factor (EF)
@@ -176,10 +181,8 @@ function calculateSpacedRepetition(item, quality) {
 }
 
 function saveSpacedRepetitionData() {
-    const data = {};
-    state.spacedRepetition.forEach((value, key) => {
-        data[key] = value;
-    });
+    // Convert Map to plain object for JSON serialization
+    const data = Object.fromEntries(state.spacedRepetition);
     const jsonStr = JSON.stringify(data);
     // Use localStorage for spaced repetition data (large data ~140KB exceeds 4KB cookie limit)
     try {
@@ -202,10 +205,8 @@ function loadSpacedRepetitionData() {
     if (!raw) return;
     try {
         const data = JSON.parse(raw);
-        state.spacedRepetition.clear();
-        Object.keys(data).forEach(key => {
-            state.spacedRepetition.set(key, data[key]);
-        });
+        // Convert plain object back to Map
+        state.spacedRepetition = new Map(Object.entries(data));
     } catch (e) {
         console.warn('[loadSpacedRepetitionData] Failed to parse:', e);
     }
@@ -391,7 +392,7 @@ function startQuiz(quizData) {
         const now = Date.now();
         // Initialize spaced repetition data for new quizzes
         quizzes.forEach(quiz => {
-            const quizKey = `${quiz.type}:${quiz.ID}`;
+            const quizKey = getQuizKey(quiz);
             if (!state.spacedRepetition.has(quizKey)) {
                 state.spacedRepetition.set(quizKey, initializeSpacedRepetitionItem(quizKey));
             }
@@ -399,8 +400,8 @@ function startQuiz(quizData) {
         
         // Sort by next review date (due items first), then by easiness (harder items first)
         quizzes.sort((a, b) => {
-            const keyA = `${a.type}:${a.ID}`;
-            const keyB = `${b.type}:${b.ID}`;
+            const keyA = getQuizKey(a);
+            const keyB = getQuizKey(b);
             const dataA = state.spacedRepetition.get(keyA);
             const dataB = state.spacedRepetition.get(keyB);
             
@@ -1019,7 +1020,7 @@ function selectAnswer(selectedButton, quiz) {
     
     // Update spaced repetition data if in spaced repetition mode
     if (state.quizOrder === 'spaced-repetition') {
-        const quizKey = `${quiz.type}:${quiz.ID}`;
+        const quizKey = getQuizKey(quiz);
         const currentData = state.spacedRepetition.get(quizKey) || initializeSpacedRepetitionItem(quizKey);
         
         // Convert correctness to quality score
