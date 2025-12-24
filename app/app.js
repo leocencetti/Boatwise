@@ -183,7 +183,14 @@ function saveSpacedRepetitionData() {
 }
 
 function loadSpacedRepetitionData() {
-    const raw = localStorage.getItem(SPACED_REPETITION_COOKIE);
+    // Try localStorage first (for large data)
+    let raw = localStorage.getItem(SPACED_REPETITION_COOKIE);
+    
+    // Fallback to cookies if localStorage is empty (for backward compatibility)
+    if (!raw) {
+        raw = getCookie(SPACED_REPETITION_COOKIE);
+    }
+    
     if (!raw) return;
     try {
         const data = JSON.parse(raw);
