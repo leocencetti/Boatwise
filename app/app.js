@@ -21,6 +21,11 @@ const state = {
 const DATA_ROOT = './data';
 const MILLISECONDS_PER_DAY = 24 * 60 * 60 * 1000;
 
+// Spaced Repetition constants
+const QUALITY_CORRECT = 4;    // Quality score for correct answer
+const QUALITY_INCORRECT = 0;  // Quality score for incorrect answer
+const QUALITY_THRESHOLD = 3;  // Minimum quality to increase interval
+
 // DOM Elements
 const header = document.getElementById('app-header');
 const setupScreen = document.getElementById('setup-screen');
@@ -135,15 +140,15 @@ function initializeSpacedRepetitionItem(quizId) {
 }
 
 function calculateSpacedRepetition(item, quality) {
-    // quality: 0-5 scale (0=complete failure, 5=perfect response)
     // SM-2 Algorithm
+    // quality: 0-5 scale (0=complete failure, 5=perfect response)
     let { easiness, interval, repetitions } = item;
     
     // Update easiness factor
     easiness = Math.max(1.3, easiness + (0.1 - (5 - quality) * (0.08 + (5 - quality) * 0.02)));
     
     // Update repetitions and interval
-    if (quality < 3) {
+    if (quality < QUALITY_THRESHOLD) {
         // Incorrect answer - reset
         repetitions = 0;
         interval = 1; // Review again in 1 day
@@ -185,10 +190,11 @@ function saveSpacedRepetitionData() {
 }
 
 function loadSpacedRepetitionData() {
-    // Try localStorage first (for large data)
+    // Try localStorage first (for large data ~140KB)
     let raw = localStorage.getItem(SPACED_REPETITION_COOKIE);
     
     // Fallback to cookies if localStorage is empty (for backward compatibility)
+    // Note: Cookies have 4KB limit, so this fallback will only work for very small datasets
     if (!raw) {
         raw = getCookie(SPACED_REPETITION_COOKIE);
     }
@@ -1016,11 +1022,11 @@ function selectAnswer(selectedButton, quiz) {
         const quizKey = `${quiz.type}:${quiz.ID}`;
         const currentData = state.spacedRepetition.get(quizKey) || initializeSpacedRepetitionItem(quizKey);
         
-        // Convert correctness to quality score (0-5 scale)
-        // For simplicity: correct = 4 (good), incorrect = 0 (fail)
-        // Note: More sophisticated quality assessment (based on answer time, confidence, etc.)
-        // could be implemented in the future, but binary feedback works well for MVP
-        const quality = isCorrect ? 4 : 0;
+        // Convert correctness to quality score
+        // Using binary quality scoring: QUALITY_CORRECT (4) or QUALITY_INCORRECT (0)
+        // This is suitable for MVP; future enhancements could use the full 0-5 scale
+        // based on factors like answer time, confidence level, or number of attempts
+        const quality = isCorrect ? QUALITY_CORRECT : QUALITY_INCORRECT;
         
         // Calculate new spaced repetition data
         const newData = calculateSpacedRepetition(currentData, quality);
