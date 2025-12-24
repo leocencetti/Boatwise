@@ -19,6 +19,7 @@ const state = {
 };
 
 const DATA_ROOT = './data';
+const MILLISECONDS_PER_DAY = 24 * 60 * 60 * 1000;
 
 // DOM Elements
 const header = document.getElementById('app-header');
@@ -159,7 +160,7 @@ function calculateSpacedRepetition(item, quality) {
     }
     
     // Calculate next review date
-    const nextReview = Date.now() + (interval * 24 * 60 * 60 * 1000);
+    const nextReview = Date.now() + (interval * MILLISECONDS_PER_DAY);
     
     return {
         easiness,
@@ -175,6 +176,7 @@ function saveSpacedRepetitionData() {
         data[key] = value;
     });
     const jsonStr = JSON.stringify(data);
+    // Use localStorage for spaced repetition data (large data ~140KB exceeds 4KB cookie limit)
     try {
         localStorage.setItem(SPACED_REPETITION_COOKIE, jsonStr);
     } catch (e) {
@@ -1016,6 +1018,8 @@ function selectAnswer(selectedButton, quiz) {
         
         // Convert correctness to quality score (0-5 scale)
         // For simplicity: correct = 4 (good), incorrect = 0 (fail)
+        // Note: More sophisticated quality assessment (based on answer time, confidence, etc.)
+        // could be implemented in the future, but binary feedback works well for MVP
         const quality = isCorrect ? 4 : 0;
         
         // Calculate new spaced repetition data
