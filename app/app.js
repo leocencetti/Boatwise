@@ -14,10 +14,17 @@ const state = {
     },
     availableFilters: {
         chapters: new Map() // Map of chapter -> Map of theme -> Set of entries
-    }
+    },
+    spacedRepetition: new Map() // Maps quiz ID to {easiness, interval, nextReview, repetitions}
 };
 
 const DATA_ROOT = './data';
+const MILLISECONDS_PER_DAY = 24 * 60 * 60 * 1000;
+
+// Spaced Repetition constants
+const QUALITY_CORRECT = 4;    // Quality score for correct answer
+const QUALITY_INCORRECT = 0;  // Quality score for incorrect answer
+const QUALITY_THRESHOLD = 3;  // Minimum quality to increase interval
 
 // DOM Elements
 const header = document.getElementById('app-header');
@@ -45,6 +52,7 @@ const resetCacheBtn = document.getElementById('reset-cache-btn');
 // Cookie utilities
 const OPTIONS_COOKIE = 'boatwise_options';
 const SESSION_COOKIE = 'boatwise_session';
+const SPACED_REPETITION_COOKIE = 'boatwise_spaced_repetition';
 
 // Fallback to localStorage if cookies don't work (e.g., file:// protocol)
 function isCookiesAvailable() {
@@ -118,6 +126,89 @@ function deleteCookie(name) {
         }
     } catch (e) {
         console.warn('Failed to delete storage', name, e);
+    }
+}
+
+// Spaced Repetition Utilities (SM-2 Algorithm)
+function getQuizKey(quiz) {
+    // Generate a unique key for spaced repetition storage
+    return `${quiz.type}:${quiz.ID}`;
+}
+
+function initializeSpacedRepetitionItem(quizId) {
+    return {
+        easiness: 2.5,      // Initial easiness factor (EF)
+        interval: 0,        // Days until next review
+        nextReview: Date.now(), // Next review timestamp
+        repetitions: 0      // Number of successful repetitions
+    };
+}
+
+function calculateSpacedRepetition(item, quality) {
+    // SM-2 Algorithm
+    // quality: 0-5 scale (0=complete failure, 5=perfect response)
+    let { easiness, interval, repetitions } = item;
+    
+    // Update easiness factor
+    easiness = Math.max(1.3, easiness + (0.1 - (5 - quality) * (0.08 + (5 - quality) * 0.02)));
+    
+    // Update repetitions and interval
+    if (quality < QUALITY_THRESHOLD) {
+        // Incorrect answer - reset
+        repetitions = 0;
+        interval = 1; // Review again in 1 day
+    } else {
+        // Correct answer
+        repetitions++;
+        if (repetitions === 1) {
+            interval = 1; // First review in 1 day
+        } else if (repetitions === 2) {
+            interval = 6; // Second review in 6 days
+        } else {
+            interval = Math.round(interval * easiness);
+        }
+    }
+    
+    // Calculate next review date
+    const nextReview = Date.now() + (interval * MILLISECONDS_PER_DAY);
+    
+    return {
+        easiness,
+        interval,
+        nextReview,
+        repetitions
+    };
+}
+
+function saveSpacedRepetitionData() {
+    // Convert Map to plain object for JSON serialization
+    const data = Object.fromEntries(state.spacedRepetition);
+    const jsonStr = JSON.stringify(data);
+    // Use localStorage for spaced repetition data (large data ~140KB exceeds 4KB cookie limit)
+    try {
+        localStorage.setItem(SPACED_REPETITION_COOKIE, jsonStr);
+    } catch (e) {
+        console.warn('[saveSpacedRepetitionData] Failed to save to localStorage:', e);
+    }
+}
+
+function loadSpacedRepetitionData() {
+    // Try localStorage first (for large data ~140KB)
+    let raw = localStorage.getItem(SPACED_REPETITION_COOKIE);
+    
+    // Fallback to cookies if localStorage is empty (for backward compatibility)
+    // Note: Cookies have 4KB limit, so this fallback will only work for very small datasets
+    if (!raw) {
+        raw = getCookie(SPACED_REPETITION_COOKIE);
+    }
+    
+    if (!raw) return;
+    try {
+        const data = JSON.parse(raw);
+        // Convert plain object back to Map
+        state.spacedRepetition = new Map(Object.entries(data));
+    } catch (e) {
+        console.warn('[loadSpacedRepetitionData] Failed to parse:', e);
     }
 }
 
@@ -214,6 +305,7 @@ async function initializeApp() {
 
     // Load options and session from cookies (resume if available)
     loadOptionsFromCookie();
+    loadSpacedRepetitionData();
     buildFilterUI();
     const resumed = loadSessionFromCookie(quizData);
 
@@ -293,6 +385,43 @@ function startQuiz(quizData) {
     // Randomize if needed
     if (state.quizOrder === 'random') {
         quizzes = shuffleArray(quizzes);
+    }
+
+    // Spaced repetition ordering
+    if (state.quizOrder === 'spaced-repetition') {
+        const now = Date.now();
+        // Initialize spaced repetition data for new quizzes
+        quizzes.forEach(quiz => {
+            const quizKey = getQuizKey(quiz);
+            if (!state.spacedRepetition.has(quizKey)) {
+                state.spacedRepetition.set(quizKey, initializeSpacedRepetitionItem(quizKey));
+            }
+        });
+        
+        // Sort by next review date (due items first), then by easiness (harder items first)
+        quizzes.sort((a, b) => {
+            const keyA = getQuizKey(a);
+            const keyB = getQuizKey(b);
+            const dataA = state.spacedRepetition.get(keyA);
+            const dataB = state.spacedRepetition.get(keyB);
+            
+            // Items due for review come first
+            const dueA = dataA.nextReview <= now;
+            const dueB = dataB.nextReview <= now;
+            
+            if (dueA && !dueB) return -1;
+            if (!dueA && dueB) return 1;
+            
+            // If both due or both not due, sort by next review date
+            if (dataA.nextReview !== dataB.nextReview) {
+                return dataA.nextReview - dataB.nextReview;
+            }
+            
+            // If same review date, sort by easiness (harder items first)
+            return dataA.easiness - dataB.easiness;
+        });
+        
+        saveSpacedRepetitionData();
     }
 
     state.allQuizzes = quizzes;
@@ -887,6 +1016,23 @@ function selectAnswer(selectedButton, quiz) {
         state.correctCount++;
     } else {
         state.incorrectCount++;
+    }
+    
+    // Update spaced repetition data if in spaced repetition mode
+    if (state.quizOrder === 'spaced-repetition') {
+        const quizKey = getQuizKey(quiz);
+        const currentData = state.spacedRepetition.get(quizKey) || initializeSpacedRepetitionItem(quizKey);
+        
+        // Convert correctness to quality score
+        // Using binary quality scoring: QUALITY_CORRECT (4) or QUALITY_INCORRECT (0)
+        // This is suitable for MVP; future enhancements could use the full 0-5 scale
+        // based on factors like answer time, confidence level, or number of attempts
+        const quality = isCorrect ? QUALITY_CORRECT : QUALITY_INCORRECT;
+        
+        // Calculate new spaced repetition data
+        const newData = calculateSpacedRepetition(currentData, quality);
+        state.spacedRepetition.set(quizKey, newData);
+        saveSpacedRepetitionData();
     }
     
     // Update the display
