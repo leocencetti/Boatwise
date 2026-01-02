@@ -143,8 +143,10 @@ header h1 {
 }
 
 #start-quiz-btn {
-    width: auto; /* Let flex: 1 from inline style decide final width */
-    margin-top: 0; /* Align height with the sibling button */
+    width: auto;
+    /* Let flex: 1 from inline style decide final width */
+    margin-top: 0;
+    /* Align height with the sibling button */
 }
 
 /* Quiz Screen */
@@ -191,6 +193,7 @@ header h1 {
 
 .quiz-content {
     flex: 1;
+    padding: 0 5px;
     overflow-y: auto;
     margin-bottom: 15px;
 }
@@ -224,7 +227,9 @@ header h1 {
 }
 
 @keyframes spinner {
-    to { transform: rotate(360deg); }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .quiz-image-container img {
@@ -633,9 +638,11 @@ header h1 {
     body {
         min-height: 100dvh;
     }
+
     .container {
         height: calc(100dvh - 20px);
     }
+
     @media (max-width: 768px) {
         .container {
             height: calc(100dvh - 10px);
