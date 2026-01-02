@@ -44,6 +44,21 @@ header h1 {
     font-weight: 600;
 }
 
+.footer {
+    background: #f7fafc;
+    padding: 10px 20px;
+    text-align: center;
+    flex-shrink: 0;
+    border-top: 1px solid #e2e8f0;
+}
+
+.footer a {
+    color: #764ba2;
+    opacity: 0.8;
+    text-decoration: none;
+}
+
+
 .screen {
     display: none;
     padding: 20px;
